@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuyona.tj — Свадебный маркетплейс</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/cards.css">
+</head>
+<body>
+
+<nav class="nav" id="main-nav"></nav>
+
+<!-- HERO -->
+<section style="background:var(--white)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:80px 0 90px">
+      <div>
+        <div class="badge badge-gold" style="margin-bottom:20px;font-size:11px;padding:6px 14px">Свадьба Вашей Мечты Ждёт Вас</div>
+        <h1 class="heading-xl" style="margin-bottom:20px">Добро пожаловать в<br>Tuyona.tj</h1>
+        <p class="lead" style="margin-bottom:36px;max-width:460px">Tuyona.tj — ваша онлайн-площадка для свадебных услуг. Рестораны, певцы, фотографы, салоны и многое другое — всё в одном месте.</p>
+        <div style="display:flex;gap:14px">
+          <a href="categories.html" class="btn btn-primary btn-lg">Категории</a>
+          <a href="about.html"      class="btn btn-secondary btn-lg">О нас</a>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <svg viewBox="0 0 460 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:420px;width:100%">
+          <circle cx="380" cy="60" r="8" stroke="#EBCFC4" stroke-width="1.5" fill="none"/>
+          <circle cx="80" cy="80" r="5" stroke="#D4B483" stroke-width="1.5" fill="none"/>
+          <text x="320" y="55" font-size="18" fill="#EBCFC4">+</text>
+          <text x="120" y="100" font-size="14" fill="#D4B483">+</text>
+          <path d="M230 90C230 90 210 70 195 75C180 80 178 98 190 108L230 145L270 108C282 98 280 80 265 75C250 70 230 90 230 90Z" stroke="#C4856F" stroke-width="2" fill="none"/>
+          <circle cx="370" cy="120" r="28" stroke="#D4B483" stroke-width="2.5" fill="none"/>
+          <circle cx="395" cy="120" r="28" stroke="#D4B483" stroke-width="2.5" fill="none"/>
+          <ellipse cx="195" cy="168" rx="14" ry="14" stroke="#5C5C5C" stroke-width="2" fill="none"/>
+          <path d="M185 182Q195 178 205 182L218 240Q195 250 172 240Z" stroke="#5C5C5C" stroke-width="2" fill="none"/>
+          <path d="M185 175Q150 200 145 280" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
+          <circle cx="210" cy="228" r="20" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
+          <ellipse cx="265" cy="165" rx="14" ry="14" stroke="#5C5C5C" stroke-width="2" fill="#EAE4DC"/>
+          <rect x="252" y="179" width="26" height="65" rx="4" stroke="#5C5C5C" stroke-width="2" fill="#5C5C5C"/>
+          <rect x="310" y="270" width="80" height="30" rx="4" stroke="#5C5C5C" stroke-width="2" fill="none"/>
+          <rect x="316" y="245" width="68" height="28" rx="4" stroke="#5C5C5C" stroke-width="2" fill="none"/>
+          <rect x="322" y="222" width="56" height="26" rx="4" stroke="#5C5C5C" stroke-width="2" fill="none"/>
+          <circle cx="350" cy="215" r="5" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
+          <circle cx="360" cy="212" r="4" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
+          <circle cx="330" cy="234" r="3" fill="#5C5C5C" opacity="0.5"/>
+          <circle cx="343" cy="236" r="3" fill="#5C5C5C" opacity="0.5"/>
+          <circle cx="356" cy="234" r="3" fill="#5C5C5C" opacity="0.5"/>
+          <circle cx="195" cy="215" r="60" fill="#A8BFA3" opacity="0.07"/>
+          <circle cx="350" cy="255" r="50" fill="#EBCFC4" opacity="0.08"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SECTION -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px">
+      <div class="eyebrow">Почему выбирают Tuyona.tj?</div>
+      <h2 class="heading-lg">Лучшие предложения для вашей свадьбы</h2>
+      <p class="lead" style="max-width:560px;margin:12px auto 0">Выбирайте из тысяч проверенных объявлений от надёжных продавцов и исполнителей.</p>
+    </div>
+
+    <h3 class="heading-md text-center" style="margin-bottom:32px">Категории</h3>
+    <div class="grid-3" id="home-categories"></div>
+  </div>
+</section>
+
+<!-- ABOUT TEASER -->
+<section class="section" style="background:#EEF4ED">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div>
+        <h2 class="heading-lg" style="margin-bottom:20px">Мы создаём <span style="color:var(--sage-d)">связи</span>, которые превращаются в <span style="color:var(--sage-d)">незабываемые свадьбы</span></h2>
+        <p class="lead">Tuyona.tj — это где будущие молодожёны напрямую находят лучших свадебных исполнителей. Мы не берём комиссию — вы общаетесь и договариваетесь напрямую.</p>
+      </div>
+      <div style="background:var(--white);border-radius:24px;padding:52px;display:flex;flex-direction:column;align-items:center;box-shadow:var(--shadow-lg);text-align:center">
+        <div style="font-size:72px;margin-bottom:16px">💍</div>
+        <div style="font-family:var(--serif);font-size:28px;font-weight:700;color:var(--dark)">TUYONA.TJ</div>
+        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:6px">Wedding Marketplace</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:40px">
+      <h2 class="heading-lg">Как работает наш сервис</h2>
+      <p class="lead" style="margin-top:8px">3 простых шага к идеальной свадьбе</p>
+    </div>
+    <div class="grid-3">
+      <div class="step-card">
+        <div class="step-card-num">01</div>
+        <div class="step-card-icon">🔍</div>
+        <div class="step-card-title">Найдите исполнителя</div>
+        <div class="step-card-text">Ищите по категориям, читайте отзывы и смотрите портфолио</div>
+        <span class="step-card-arrow">→</span>
+      </div>
+      <div class="step-card">
+        <div class="step-card-num">02</div>
+        <div class="step-card-icon">📞</div>
+        <div class="step-card-title">Свяжитесь напрямую</div>
+        <div class="step-card-text">Напишите или позвоните исполнителю через контакты в профиле</div>
+        <span class="step-card-arrow">→</span>
+      </div>
+      <div class="step-card">
+        <div class="step-card-num">03</div>
+        <div class="step-card-icon">🤝</div>
+        <div class="step-card-title">Обсудите детали</div>
+        <div class="step-card-text">Договоритесь обо всех нюансах напрямую с исполнителем</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:40px">
+      <h2 class="heading-lg">Почему выбирают Tuyona.tj</h2>
+    </div>
+    <div class="grid-3" style="margin-bottom:60px">
+      <div class="why-card"><div class="why-card-icon">🛡️</div><div class="why-card-title">Проверенные исполнители</div><div class="why-card-text">Каждый профиль проходит ручную модерацию перед публикацией</div></div>
+      <div class="why-card"><div class="why-card-icon">💗</div><div class="why-card-title">Прямой контакт</div><div class="why-card-text">Общайтесь напрямую, без посредников и скрытых комиссий</div></div>
+      <div class="why-card"><div class="why-card-icon">💰</div><div class="why-card-title">Лучшие цены</div><div class="why-card-text">Сравнивайте цены и выбирайте оптимальное предложение</div></div>
+    </div>
+
+    <!-- CTA -->
+    <div style="background:var(--sage);border-radius:24px;padding:60px;text-align:center">
+      <div style="background:var(--white);border-radius:16px;padding:48px;display:inline-block;min-width:460px">
+        <h3 class="heading-md" style="margin-bottom:20px">Начните планировать свадьбу мечты</h3>
+        <a href="categories.html" class="btn btn-primary btn-lg btn-full" style="margin-bottom:12px">Найти исполнителей</a>
+        <p style="font-size:12px;color:var(--muted)">Это бесплатно. Мы не берём комиссию с ваших сделок.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="main-footer"></footer>
+
+<script type="module">
+  import { renderNav, renderFooter } from './js/nav.js';
+  import { DEMO_LISTINGS, getCatName } from './js/listings.js';
+
+  renderNav('home');
+  renderFooter();
+
+  // Категории на главной
+  const cats = [
+    { key:'rest',   icon:'🍽️', name:'Рестораны',  bg:'#EEF4ED', count:3 },
+    { key:'singer', icon:'🎤', name:'Певцы',       bg:'#FDF0F4', count:1 },
+    { key:'decor',  icon:'🌸', name:'Оформление',  bg:'#FDF8EE', count:1 },
+  ];
+  document.getElementById('home-categories').innerHTML = cats.map(c => `
+    <div class="cat-card" onclick="location.href='categories.html?cat=${c.key}'">
+      <div class="cat-card-icon" style="background:${c.bg}"><span>${c.icon}</span></div>
+      <div class="cat-card-name">${c.name}</div>
+      <div class="cat-card-count">${c.count} объявления</div>
+      <button class="btn btn-secondary btn-sm" style="margin-top:14px;width:100%">К категориям</button>
+    </div>`).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход — Tuyona.tj</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/nav.css">
+</head>
+<body>
+
+<nav class="nav" id="main-nav"></nav>
+
+<div style="min-height:calc(100vh - 66px);display:flex;align-items:center;justify-content:center;padding:40px 20px;background:var(--bg)">
+  <div style="width:100%;max-width:440px">
+
+    <!-- TABS -->
+    <div style="display:flex;background:var(--white);border-radius:var(--radius-lg);padding:6px;margin-bottom:28px;border:1px solid var(--border)">
+      <button id="tab-login"    onclick="showTab('login')"    class="btn btn-full" style="border-radius:8px;font-size:14px">Войти</button>
+      <button id="tab-register" onclick="showTab('register')"  class="btn btn-full" style="border-radius:8px;font-size:14px">Регистрация</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="form-login" style="background:var(--white);border-radius:var(--radius-lg);padding:36px;border:1px solid var(--border)">
+      <div style="text-align:center;margin-bottom:28px">
+        <div style="font-size:36px;margin-bottom:10px">💍</div>
+        <h2 class="heading-md">Добро пожаловать</h2>
+        <p style="font-size:13px;color:var(--muted);margin-top:6px">Войдите в свой аккаунт Tuyona.tj</p>
+      </div>
+      <div id="login-error"></div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" id="login-email" class="form-control" placeholder="example@mail.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Пароль</label>
+        <input type="password" id="login-password" class="form-control" placeholder="••••••••">
+      </div>
+      <button onclick="doLogin()" class="btn btn-primary btn-full" style="margin-top:8px;padding:13px">Войти</button>
+      <div style="text-align:center;margin-top:16px">
+        <span style="font-size:13px;color:var(--muted)">Нет аккаунта? </span>
+        <a onclick="showTab('register')" style="font-size:13px;color:var(--gold-d);cursor:pointer;font-weight:500">Зарегистрироваться</a>
+      </div>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="form-register" style="display:none;background:var(--white);border-radius:var(--radius-lg);padding:36px;border:1px solid var(--border)">
+      <div style="text-align:center;margin-bottom:28px">
+        <div style="font-size:36px;margin-bottom:10px">✨</div>
+        <h2 class="heading-md">Создать аккаунт</h2>
+        <p style="font-size:13px;color:var(--muted);margin-top:6px">Зарегистрируйтесь на Tuyona.tj</p>
+      </div>
+      <div id="register-error"></div>
+
+      <!-- Role selector -->
+      <div class="form-group">
+        <label class="form-label">Я регистрируюсь как</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div id="role-client" onclick="setRole('client')" style="border:1.5px solid var(--gold);border-radius:var(--radius);padding:14px;text-align:center;cursor:pointer;background:var(--gold-pale,#FDF8EE)">
+            <div style="font-size:24px;margin-bottom:6px">💑</div>
+            <div style="font-size:13px;font-weight:500;color:var(--dark)">Клиент</div>
+            <div style="font-size:11px;color:var(--muted)">Ищу услуги</div>
+          </div>
+          <div id="role-vendor" onclick="setRole('vendor')" style="border:1.5px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;cursor:pointer">
+            <div style="font-size:24px;margin-bottom:6px">🏪</div>
+            <div style="font-size:13px;font-weight:500;color:var(--dark)">Исполнитель</div>
+            <div style="font-size:11px;color:var(--muted)">Предлагаю услуги</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Имя / Название</label>
+        <input type="text" id="reg-name" class="form-control" placeholder="Иван Иванов или Ресторан Магнолия">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Телефон</label>
+        <input type="tel" id="reg-phone" class="form-control" placeholder="+992 9X XXX XXXX">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" id="reg-email" class="form-control" placeholder="example@mail.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Пароль</label>
+        <input type="password" id="reg-password" class="form-control" placeholder="Минимум 6 символов">
+      </div>
+      <button onclick="doRegister()" class="btn btn-primary btn-full" style="margin-top:8px;padding:13px">Создать аккаунт</button>
+      <div style="text-align:center;margin-top:16px">
+        <span style="font-size:13px;color:var(--muted)">Уже есть аккаунт? </span>
+        <a onclick="showTab('login')" style="font-size:13px;color:var(--gold-d);cursor:pointer;font-weight:500">Войти</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="module">
+  import { renderNav } from './js/nav.js';
+  import { login, register } from './js/auth.js';
+
+  renderNav('');
+
+  let currentRole = 'client';
+
+  window.setRole = (role) => {
+    currentRole = role;
+    document.getElementById('role-client').style.border = role==='client' ? '1.5px solid var(--gold)' : '1.5px solid var(--border)';
+    document.getElementById('role-client').style.background = role==='client' ? '#FDF8EE' : 'transparent';
+    document.getElementById('role-vendor').style.border = role==='vendor' ? '1.5px solid var(--gold)' : '1.5px solid var(--border)';
+    document.getElementById('role-vendor').style.background = role==='vendor' ? '#FDF8EE' : 'transparent';
+  };
+
+  window.showTab = (tab) => {
+    document.getElementById('form-login').style.display    = tab==='login'    ? 'block' : 'none';
+    document.getElementById('form-register').style.display = tab==='register' ? 'block' : 'none';
+    document.getElementById('tab-login').className    = 'btn btn-full ' + (tab==='login'    ? 'btn-primary' : '');
+    document.getElementById('tab-register').className = 'btn btn-full ' + (tab==='register' ? 'btn-primary' : '');
+    document.getElementById('tab-login').style.borderRadius    = '8px';
+    document.getElementById('tab-register').style.borderRadius = '8px';
+    document.getElementById('tab-login').style.fontSize    = '14px';
+    document.getElementById('tab-register').style.fontSize = '14px';
+  };
+
+  window.doLogin = async () => {
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+    const errDiv = document.getElementById('login-error');
+    try {
+      await login(email, password);
+      window.location.href = 'dashboard.html';
+    } catch(e) {
+      errDiv.innerHTML = `<div class="alert alert-error">${e.message}</div>`;
+    }
+  };
+
+  window.doRegister = async () => {
+    const name     = document.getElementById('reg-name').value.trim();
+    const phone    = document.getElementById('reg-phone').value.trim();
+    const email    = document.getElementById('reg-email').value.trim();
+    const password = document.getElementById('reg-password').value;
+    const errDiv   = document.getElementById('register-error');
+    if (!name || !email || !password) {
+      errDiv.innerHTML = `<div class="alert alert-error">Заполните все обязательные поля</div>`;
+      return;
+    }
+    try {
+      await register(email, password, name, phone, currentRole);
+      errDiv.innerHTML = `<div class="alert alert-success">✓ Аккаунт создан! Проверьте email для подтверждения.</div>`;
+    } catch(e) {
+      errDiv.innerHTML = `<div class="alert alert-error">${e.message}</div>`;
+    }
+  };
+
+  // Check URL hash
+  if (location.hash === '#register') showTab('register');
+  else showTab('login');
+</script>
+</body>
+</html>

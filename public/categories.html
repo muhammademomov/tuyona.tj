@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Категории — Tuyona.tj</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/cards.css">
+</head>
+<body>
+
+<nav class="nav" id="main-nav"></nav>
+
+<div class="container" style="padding-top:52px;padding-bottom:80px">
+  <h1 class="heading-lg" style="margin-bottom:28px">Все категории</h1>
+
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-chip active" data-cat="all">Все категории</button>
+    <button class="filter-chip" data-cat="rest">Рестораны</button>
+    <button class="filter-chip" data-cat="music">Музыканты</button>
+    <button class="filter-chip" data-cat="decor">Оформление</button>
+    <button class="filter-chip" data-cat="mc">Ведущие</button>
+    <button class="filter-chip" data-cat="photo">Фотографы</button>
+    <button class="filter-chip" data-cat="singer">Певцы</button>
+    <button class="filter-chip" data-cat="car">Машины</button>
+    <button class="filter-chip" data-cat="salon">Свадебные салоны</button>
+  </div>
+
+  <div class="listings-grid" id="listings-grid">
+    <div class="spinner" style="grid-column:1/-1;margin:60px auto"></div>
+  </div>
+</div>
+
+<footer class="footer" id="main-footer"></footer>
+
+<script type="module">
+  import { renderNav, renderFooter } from './js/nav.js';
+  import { DEMO_LISTINGS, renderCard } from './js/listings.js';
+
+  renderNav('cats');
+  renderFooter();
+
+  let currentCat = new URLSearchParams(location.search).get('cat') || 'all';
+
+  function renderListings(cat) {
+    currentCat = cat;
+    const items = cat === 'all' ? DEMO_LISTINGS : DEMO_LISTINGS.filter(l => l.category === cat);
+    const grid = document.getElementById('listings-grid');
+    if (items.length === 0) {
+      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">🔍</div><div class="empty-state-title">Ничего не найдено</div><p class="text-muted">Попробуйте другую категорию</p></div>`;
+    } else {
+      grid.innerHTML = items.map(renderCard).join('');
+    }
+  }
+
+  // Filter chips
+  document.getElementById('filter-bar').addEventListener('click', e => {
+    const chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    renderListings(chip.dataset.cat);
+  });
+
+  // Set active chip from URL
+  if (currentCat !== 'all') {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', c.dataset.cat === currentCat);
+    });
+  }
+
+  renderListings(currentCat);
+</script>
+</body>
+</html>

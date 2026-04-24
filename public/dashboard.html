@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет — Tuyona.tj</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/cards.css">
+</head>
+<body>
+
+<nav class="nav" id="main-nav"></nav>
+
+<div class="container" style="padding-top:48px;padding-bottom:80px">
+
+  <div style="display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:start">
+
+    <!-- SIDEBAR -->
+    <div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px;text-align:center">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:600;color:var(--dark);margin:0 auto 12px" id="dash-avatar">—</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--dark)" id="dash-name">—</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px" id="dash-role">—</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+        <button onclick="showSection('listings')" class="dash-menu-btn active" id="menu-listings">📋 Мои объявления</button>
+        <button onclick="showSection('add')"      class="dash-menu-btn"        id="menu-add">➕ Добавить услугу</button>
+        <button onclick="showSection('profile')"  class="dash-menu-btn"        id="menu-profile">👤 Профиль</button>
+        <button onclick="doLogout()" style="width:100%;padding:14px 20px;border:none;background:none;text-align:left;font-size:14px;cursor:pointer;font-family:var(--sans);color:#E24B4A;border-top:1px solid var(--border)">🚪 Выйти</button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div>
+
+      <!-- MY LISTINGS -->
+      <div id="section-listings">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+          <h2 class="heading-md">Мои объявления</h2>
+          <button onclick="showSection('add')" class="btn btn-primary btn-sm">+ Добавить</button>
+        </div>
+        <div id="my-listings-grid" class="listings-grid">
+          <div class="spinner" style="grid-column:1/-1;margin:40px auto"></div>
+        </div>
+      </div>
+
+      <!-- ADD LISTING -->
+      <div id="section-add" style="display:none">
+        <h2 class="heading-md" style="margin-bottom:24px">Добавить услугу</h2>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px">
+          <div id="add-error"></div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Название *</label>
+              <input type="text" id="add-name" class="form-control" placeholder="Ресторан Магнолия">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Категория *</label>
+              <select id="add-cat" class="form-control">
+                <option value="">Выберите категорию</option>
+                <option value="rest">Ресторан</option>
+                <option value="singer">Певец</option>
+                <option value="music">Музыкант</option>
+                <option value="photo">Фотограф</option>
+                <option value="decor">Оформление</option>
+                <option value="salon">Свадебный салон</option>
+                <option value="car">Машины</option>
+                <option value="mc">Ведущий</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Описание</label>
+            <textarea id="add-desc" class="form-control" rows="4" placeholder="Расскажите о вашей услуге..."></textarea>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Цена</label>
+              <input type="text" id="add-price" class="form-control" placeholder="от 1000 сом или Договорная">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Город</label>
+              <select id="add-city" class="form-control">
+                <option>Душанбе</option>
+                <option>Хуҷанд</option>
+                <option>Бохтар</option>
+                <option>Кӯлоб</option>
+                <option>Вся страна</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Телефон</label>
+              <input type="tel" id="add-phone" class="form-control" placeholder="+992 9X XXX XXXX">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Часы работы</label>
+              <input type="text" id="add-hours" class="form-control" placeholder="8:00 – 23:00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Адрес</label>
+            <input type="text" id="add-address" class="form-control" placeholder="ул. Рудаки, 45">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Соцсети (Instagram, YouTube...)</label>
+            <input type="text" id="add-social" class="form-control" placeholder="@tuyona_tj">
+          </div>
+          <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:8px">
+            <button onclick="showSection('listings')" class="btn btn-secondary">Отмена</button>
+            <button onclick="doAddListing()" class="btn btn-primary">Опубликовать</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFILE -->
+      <div id="section-profile" style="display:none">
+        <h2 class="heading-md" style="margin-bottom:24px">Мой профиль</h2>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px">
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Имя / Название</label>
+              <input type="text" id="prof-name" class="form-control">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Телефон</label>
+              <input type="tel" id="prof-phone" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" id="prof-email" class="form-control" disabled style="opacity:0.6">
+          </div>
+          <div style="display:flex;justify-content:flex-end">
+            <button class="btn btn-primary">Сохранить изменения</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+.dash-menu-btn {
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: var(--sans);
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.dash-menu-btn:hover { background: var(--bg); }
+.dash-menu-btn.active { background: var(--bg); font-weight: 500; color: var(--dark); }
+</style>
+
+<footer class="footer" id="main-footer"></footer>
+
+<script type="module">
+  import { renderNav, renderFooter } from './js/nav.js';
+  import { getCurrentUser, logout } from './js/auth.js';
+  import { getMyListings, createListing, renderCard, DEMO_LISTINGS } from './js/listings.js';
+
+  renderNav('');
+  renderFooter();
+
+  window.doLogout = logout;
+
+  // Load user
+  const user = await getCurrentUser();
+  if (!user) { window.location.href = 'login.html'; return; }
+
+  const initials = (user.profile?.name || user.email).slice(0,2).toUpperCase();
+  document.getElementById('dash-avatar').textContent = initials;
+  document.getElementById('dash-name').textContent   = user.profile?.name || user.email;
+  document.getElementById('dash-role').textContent   = user.profile?.role === 'vendor' ? 'Исполнитель' : 'Клиент';
+  document.getElementById('prof-name').value  = user.profile?.name || '';
+  document.getElementById('prof-phone').value = user.profile?.phone || '';
+  document.getElementById('prof-email').value = user.email;
+
+  // Load listings
+  try {
+    const items = await getMyListings();
+    renderMyListings(items.length ? items : []);
+  } catch {
+    renderMyListings(DEMO_LISTINGS.slice(0,3));
+  }
+
+  function renderMyListings(items) {
+    const grid = document.getElementById('my-listings-grid');
+    if (!items.length) {
+      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">📋</div><div class="empty-state-title">Нет объявлений</div><p class="text-muted">Добавьте первую услугу</p><button onclick="showSection('add')" class="btn btn-primary" style="margin-top:16px">+ Добавить услугу</button></div>`;
+    } else {
+      grid.innerHTML = items.map(renderCard).join('');
+    }
+  }
+
+  window.showSection = (name) => {
+    ['listings','add','profile'].forEach(s => {
+      document.getElementById('section-'+s).style.display = s===name ? 'block' : 'none';
+      const btn = document.getElementById('menu-'+s);
+      if (btn) btn.classList.toggle('active', s===name);
+    });
+  };
+
+  window.doAddListing = async () => {
+    const data = {
+      name:        document.getElementById('add-name').value.trim(),
+      category:    document.getElementById('add-cat').value,
+      description: document.getElementById('add-desc').value.trim(),
+      price:       document.getElementById('add-price').value.trim(),
+      city:        document.getElementById('add-city').value,
+      phone:       document.getElementById('add-phone').value.trim(),
+      hours:       document.getElementById('add-hours').value.trim(),
+      address:     document.getElementById('add-address').value.trim(),
+      social:      document.getElementById('add-social').value.trim(),
+    };
+    const errDiv = document.getElementById('add-error');
+    if (!data.name || !data.category) {
+      errDiv.innerHTML = `<div class="alert alert-error">Заполните название и категорию</div>`;
+      return;
+    }
+    try {
+      await createListing(data);
+      errDiv.innerHTML = `<div class="alert alert-success">✓ Объявление опубликовано!</div>`;
+      setTimeout(() => showSection('listings'), 1500);
+    } catch(e) {
+      errDiv.innerHTML = `<div class="alert alert-error">${e.message}</div>`;
+    }
+  };
+</script>
+</body>
+</html>
