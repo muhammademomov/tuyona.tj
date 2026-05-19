@@ -11,12 +11,22 @@ app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// ── ЯВНЫЕ РОУТЫ ДЛЯ SEO ФАЙЛОВ (первыми, до всего остального) ──
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  res.type('application/xml');
+  res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
+
 // Папка для загрузок
 const uploadDir = path.join(__dirname, 'public/uploads');
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
-// ── СТАТИЧЕСКИЕ ФАЙЛЫ (robots.txt, sitemap.xml, html, css, js) ──
-// ВАЖНО: должно быть ДО catch-all роута app.get('*', ...)
+// Статические файлы (фронтенд + загруженные фото)
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(uploadDir));
 
@@ -31,14 +41,8 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString(), app: 'Tan-tana.tj' });
 });
 
-// ── ФРОНТЕНД — только для HTML роутов, НЕ для статических файлов ──
+// ── ФРОНТЕНД — отдаём index.html для всех остальных роутов ──
 app.get('*', (req, res) => {
-  // Если запрашивают .txt, .xml и т.д. — отдаём 404, не index.html
-  const ext = path.extname(req.path);
-  if (ext && ext !== '.html') {
-    return res.status(404).send('Not found');
-  }
-
   const file = path.join(__dirname, 'public', 'index.html');
   if (fs.existsSync(file)) {
     res.sendFile(file);
