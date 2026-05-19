@@ -23,10 +23,11 @@ app.use('/uploads', express.static(uploadDir));
 app.use('/api/listings',   require('./routes/listings'));
 app.use('/api/categories', require('./routes/categories'));
 app.use('/api/admin',      require('./routes/admin'));
+app.use('/api/upload',     require('./routes/upload'));
 
 // ── HEALTH CHECK ──
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', time: new Date().toISOString(), app: 'Tuyona.tj' });
+  res.json({ status: 'ok', time: new Date().toISOString(), app: 'Tan-tana.tj' });
 });
 
 // ── ФРОНТЕНД — отдаём HTML для всех остальных роутов ──
@@ -35,14 +36,20 @@ app.get('*', (req, res) => {
   if (fs.existsSync(file)) {
     res.sendFile(file);
   } else {
-    res.send('Tuyona.tj API работает ✅');
+    res.send('Tan-tana.tj API работает ✅');
   }
 });
 
 // ── ЗАПУСК ──
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`\n🚀 Tuyona.tj сервер запущен на http://localhost:${PORT}`);
+  console.log(`\n🚀 Tan-tana.tj сервер запущен на http://localhost:${PORT}`);
   console.log(`📡 API: http://localhost:${PORT}/api/listings`);
   console.log(`🔑 Режим: ${process.env.NODE_ENV || 'development'}\n`);
 });
+
+// ── TELEGRAM БОТ ──
+if (process.env.BOT_TOKEN) {
+  require('./bot');
+  console.log('🤖 Telegram бот запущен!');
+}
