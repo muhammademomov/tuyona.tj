@@ -3,34 +3,162 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tuyona.tj — Свадебный маркетплейс</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/cards.css">
-</head>
-<body>
+  <title>Тан-Тана — Свадебный маркетплейс Таджикистана | Туй, Рестораны, Певцы, Фотографы</title>
+  <!-- ═══ SEO META ═══════════════════════════════════════════════════════════ -->
+  <meta name="description" content="Тан-Тана (Тантана) — свадебный маркетплейс Таджикистана. Рестораны Яккасарой, Яккачинор, Шаршара и другие туйхона. Певцы, фотографы, оформление, салоны. Туй, туйона, туена — всё для вашей свадьбы в Душанбе и по всему Таджикистану.">
+  <meta name="keywords" content="тантана, tantana, tan-tana, тантана тж, тантана.тж, tan-tana.tj, Tan-Tana TJ, тан тана, тан-тана, туй, туйона, туена, тан, туй таджикистан, туй душанбе, туйхона, туйхона душанбе, туйи точики, туймуборак, туй маркетплейс, свадьба таджикистан, свадьба душанбе, свадебный маркетплейс таджикистан, арус, домод, никох, ресторан душанбе, свадебный ресторан душанбе, яккасарой, яккачинор, шаршара, шахриер, борбад, точ, навруз, вахш, истаравшан, лаззат, сино, бахор, кохи арус, тарабхона, певцы на свадьбу таджикистан, хонанда барои туй, хонандагон, фотограф на свадьбу душанбе, суратгир, оформление свадьбы таджикистан, ороиши туй, музыканты на свадьбу таджикистан, мусикачиён, тамада душанбе, тантанабарон, свадебный салон душанбе, салони арус, машины на свадьбу душанбе, мошина туй, кортеж душанбе, свадьба под ключ таджикистан, организация свадьбы душанбе, туй хучанд, туй кулоб, туй бохтар, туйхона хучанд, свадьба хучанд">
+  <meta name="author" content="Tan-tana.tj">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tan-tana.tj/">
 
-<nav class="nav" id="main-nav"></nav>
+  <!-- Open Graph (для соцсетей) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tan-tana.tj/">
+  <meta property="og:title" content="Тан-Тана — Свадебный маркетплейс Таджикистана">
+  <meta property="og:description" content="Все свадебные услуги в одном месте. Рестораны, певцы, фотографы, оформление, салоны по всему Таджикистану.">
+  <meta property="og:image" content="https://tan-tana.tj/img/logo-tantana.svg">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Tan-tana.tj">
+
+  <!-- JSON-LD: Schema.org разметка для Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Тан-Тана — Свадебный маркетплейс",
+    "alternateName": ["Тантана", "tantana", "tan-tana", "тантана.тж", "Tan-Tana TJ", "туй маркетплейс", "туйона", "туена", "тан"],
+    "url": "https://tan-tana.tj",
+    "description": "Свадебный маркетплейс Таджикистана. Рестораны, певцы, фотографы и другие свадебные исполнители по всему Таджикистану.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tan-tana.tj/categories.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "sameAs": [
+      "https://t.me/tantana_partner_bot"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Tan-tana.tj",
+    "alternateName": ["Тантана", "tantana", "tan-tana", "тантана.тж", "Tan-Tana TJ", "туй маркетплейс", "туйона", "туена", "тан"],
+    "url": "https://tan-tana.tj",
+    "logo": "https://tan-tana.tj/img/logo-tantana.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "availableLanguage": ["Russian", "Tajik"]
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Tajikistan"
+    },
+    "description": "Свадебный маркетплейс Таджикистана — все исполнители для вашей свадьбы в одном месте."
+  }
+  </script>
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/cards.css">
+  <link rel="stylesheet" href="/css/mobile.css">
+
+<style>
+@media(max-width:768px){
+  /* Hero - two columns: text left, image right */
+  .hero-desktop { display: none !important; }
+  .hero-mobile { display: grid !important; }
+  
+  /* Hide desktop cats, show mobile */
+  #d-cats { display: none !important; }
+  #m-cats { display: grid !important; }
+  
+  /* Hide desktop about grid image */
+  #about-grid > div:last-child { display: none !important; }
+  #about-grid { grid-template-columns: 1fr !important; }
+  
+  /* Steps */
+  #steps-grid { grid-template-columns: 1fr !important; }
+  .step-card-arrow { display: none !important; }
+  
+  /* Why */
+  #why-grid { grid-template-columns: 1fr 1fr !important; }
+  
+  /* Container padding */
+  .container { padding: 0 16px !important; }
+  .section { padding: 28px 0 !important; }
+  
+  /* Typography */
+  .heading-xl { font-size: 26px !important; line-height: 1.2 !important; }
+  .heading-lg { font-size: 22px !important; }
+  
+  /* Footer hidden */
+  .footer { display: none !important; }
+}
+
+    .nav-partner-btn{background:#D4B483;color:white;padding:8px 18px;border-radius:50px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;white-space:nowrap}
+    .nav-partner-btn:hover{background:#A8864A;color:white}
+  
+    .lang-switcher{display:flex;align-items:center;gap:4px;margin-left:12px}
+    .lang-btn{background:none;border:1.5px solid #EAE4DC;color:#8A8A8A;padding:4px 10px;border-radius:50px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
+    .lang-btn:hover{border-color:#D4B483;color:#A8864A}
+    .lang-btn.active{background:#D4B483;color:white;border-color:#D4B483}
+  </style>
+</head>
+<body class="has-bottom-nav">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><span class="nav-logo-dot"></span>Tan-tana<span>.tj</span></a>
+    <div class="nav-links">
+      <a href="/"                class="nav-link active"><span data-i18n="Главная">Главная</span></a>
+      <a href="/categories.html" class="nav-link"><span data-i18n="Категории">Категории</span></a>
+      <a href="/about.html"      class="nav-link"><span data-i18n="О нас">О нас</span></a>
+      <a href="https://t.me/tantana_partner_bot?start=partner" target="_blank" class="nav-partner-btn"><span data-i18n="🤝 Стать партнёром">🤝 Стать партнёром</span></a>
+
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('ru')" id="btn-ru">РУ</button>
+        <button class="lang-btn" onclick="setLang('tj')" id="btn-tj">ТЧ</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="/" class="bottom-nav-item active">
+      <span class="bottom-nav-icon">🏠</span>
+      <span data-i18n="Главная">Главная</span>
+    </a>
+    <a href="/categories.html" class="bottom-nav-item">
+      <span class="bottom-nav-icon">🔍</span>
+      <span data-i18n="Категории">Категории</span>
+    </a>
+    <a href="/about.html" class="bottom-nav-item">
+      <span class="bottom-nav-icon">ℹ️</span>
+      <span data-i18n="О нас">О нас</span>
+    </a>
+  </div>
+</nav>
 
 <!-- HERO -->
 <section style="background:var(--white)">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:80px 0 90px">
+    <!-- DESKTOP: two columns -->
+    <div class="hero-desktop" style="display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:80px 0 90px">
       <div>
-        <div class="badge badge-gold" style="margin-bottom:20px;font-size:11px;padding:6px 14px">Свадьба Вашей Мечты Ждёт Вас</div>
-        <h1 class="heading-xl" style="margin-bottom:20px">Добро пожаловать в<br>Tuyona.tj</h1>
-        <p class="lead" style="margin-bottom:36px;max-width:460px">Tuyona.tj — ваша онлайн-площадка для свадебных услуг. Рестораны, певцы, фотографы, салоны и многое другое — всё в одном месте.</p>
-        <div style="display:flex;gap:14px">
-          <a href="categories.html" class="btn btn-primary btn-lg">Категории</a>
-          <a href="about.html"      class="btn btn-secondary btn-lg">О нас</a>
-        </div>
+        <div class="badge badge-gold" style="margin-bottom:20px;font-size:11px;padding:6px 14px"><span data-i18n="Свадьба Вашей Мечты Ждёт Вас">Свадьба Вашей Мечты Ждёт Вас</span></div>
+        <h1 class="heading-xl" style="margin-bottom:16px"><span data-i18n="Добро пожаловать в Tan-tana.tj">Добро пожаловать в Tan-tana.tj</span></h1>
+        <p class="lead" style="margin-bottom:28px;max-width:460px"><span data-i18n="Ваша онлайн-площадка для свадебных услуг. Рестораны, певцы, фотографы и многое другое — всё в одном месте.">Ваша онлайн-площадка для свадебных услуг. Рестораны, певцы, фотографы и многое другое — всё в одном месте.</span></p>
       </div>
       <div style="display:flex;justify-content:center">
         <svg viewBox="0 0 460 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:420px;width:100%">
           <circle cx="380" cy="60" r="8" stroke="#EBCFC4" stroke-width="1.5" fill="none"/>
           <circle cx="80" cy="80" r="5" stroke="#D4B483" stroke-width="1.5" fill="none"/>
           <text x="320" y="55" font-size="18" fill="#EBCFC4">+</text>
-          <text x="120" y="100" font-size="14" fill="#D4B483">+</text>
           <path d="M230 90C230 90 210 70 195 75C180 80 178 98 190 108L230 145L270 108C282 98 280 80 265 75C250 70 230 90 230 90Z" stroke="#C4856F" stroke-width="2" fill="none"/>
           <circle cx="370" cy="120" r="28" stroke="#D4B483" stroke-width="2.5" fill="none"/>
           <circle cx="395" cy="120" r="28" stroke="#D4B483" stroke-width="2.5" fill="none"/>
@@ -39,131 +167,161 @@
           <path d="M185 175Q150 200 145 280" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
           <circle cx="210" cy="228" r="20" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
           <ellipse cx="265" cy="165" rx="14" ry="14" stroke="#5C5C5C" stroke-width="2" fill="#EAE4DC"/>
-          <rect x="252" y="179" width="26" height="65" rx="4" stroke="#5C5C5C" stroke-width="2" fill="#5C5C5C"/>
+          <rect x="252" y="179" width="26" height="65" rx="4" fill="#5C5C5C"/>
           <rect x="310" y="270" width="80" height="30" rx="4" stroke="#5C5C5C" stroke-width="2" fill="none"/>
           <rect x="316" y="245" width="68" height="28" rx="4" stroke="#5C5C5C" stroke-width="2" fill="none"/>
           <rect x="322" y="222" width="56" height="26" rx="4" stroke="#5C5C5C" stroke-width="2" fill="none"/>
-          <circle cx="350" cy="215" r="5" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
-          <circle cx="360" cy="212" r="4" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
           <circle cx="330" cy="234" r="3" fill="#5C5C5C" opacity="0.5"/>
           <circle cx="343" cy="236" r="3" fill="#5C5C5C" opacity="0.5"/>
           <circle cx="356" cy="234" r="3" fill="#5C5C5C" opacity="0.5"/>
-          <circle cx="195" cy="215" r="60" fill="#A8BFA3" opacity="0.07"/>
-          <circle cx="350" cy="255" r="50" fill="#EBCFC4" opacity="0.08"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- MOBILE: text left + svg right -->
+    <div class="hero-mobile" style="display:none;grid-template-columns:1fr 1fr;align-items:center;gap:16px;padding:24px 0 28px">
+      <div>
+        <div class="badge badge-gold" style="margin-bottom:12px;font-size:10px;padding:5px 10px"><span data-i18n="Свадьба Вашей Мечты">Свадьба Вашей Мечты</span></div>
+        <h1 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--dark);line-height:1.2;margin-bottom:10px"><span data-i18n="Добро пожаловать в Tan-tana.tj">Добро пожаловать в Tan-tana.tj</span></h1>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6"><span data-i18n="Ваша онлайн-площадка для свадебных услуг.">Ваша онлайн-площадка для свадебных услуг.</span></p>
+      </div>
+      <div style="display:flex;justify-content:center;align-items:center">
+        <svg viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:160px">
+          <path d="M150 55C150 55 135 40 124 44C113 48 112 62 120 70L150 97L180 70C188 62 187 48 176 44C165 40 150 55 150 55Z" stroke="#C4856F" stroke-width="2" fill="none"/>
+          <circle cx="220" cy="75" r="20" stroke="#D4B483" stroke-width="2" fill="none"/>
+          <circle cx="238" cy="75" r="20" stroke="#D4B483" stroke-width="2" fill="none"/>
+          <ellipse cx="120" cy="120" rx="11" ry="11" stroke="#5C5C5C" stroke-width="2" fill="none"/>
+          <path d="M112 131Q120 128 128 131L137 170Q120 177 103 170Z" stroke="#5C5C5C" stroke-width="2" fill="none"/>
+          <path d="M112 126Q88 145 86 200" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
+          <circle cx="140" cy="162" r="14" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
+          <ellipse cx="170" cy="118" rx="11" ry="11" stroke="#5C5C5C" stroke-width="2" fill="#EAE4DC"/>
+          <rect x="160" y="129" width="20" height="48" rx="3" fill="#5C5C5C"/>
+          <rect x="195" y="198" width="58" height="22" rx="3" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
+          <rect x="199" y="178" width="50" height="22" rx="3" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
+          <rect x="203" y="160" width="42" height="20" rx="3" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
+          <circle cx="222" cy="153" r="4" stroke="#5C5C5C" stroke-width="1.5" fill="none"/>
         </svg>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHY SECTION -->
+<!-- CATEGORIES -->
 <section class="section" style="background:var(--bg)">
   <div class="container">
-    <div class="text-center" style="margin-bottom:48px">
-      <div class="eyebrow">Почему выбирают Tuyona.tj?</div>
-      <h2 class="heading-lg">Лучшие предложения для вашей свадьбы</h2>
-      <p class="lead" style="max-width:560px;margin:12px auto 0">Выбирайте из тысяч проверенных объявлений от надёжных продавцов и исполнителей.</p>
+    <div class="text-center" style="margin-bottom:32px">
+      <div class="eyebrow"><span data-i18n="Почему выбирают Tan-tana.tj?">Почему выбирают Tan-tana.tj?</span></div>
+      <h2 class="heading-lg"><span data-i18n="Лучшие предложения для вашей свадьбы">Лучшие предложения для вашей свадьбы</span></h2>
+      <p class="lead" style="max-width:560px;margin:12px auto 0"><span data-i18n="Выбирайте из тысяч проверенных объявлений">Выбирайте из тысяч проверенных объявлений.</span></p>
+    </div>
+    <h3 class="heading-md text-center" style="margin-bottom:24px"><span data-i18n="Категории">Категории</span></h3>
+
+    <!-- Desktop -->
+    <div class="grid-3" id="d-cats">
+      <div class="cat-card" onclick="location.href='/categories.html?cat=rest'" style="cursor:pointer"><div class="cat-card-icon" style="background:#EEF4ED">🍽️</div><div class="cat-card-name"><span data-i18n="Рестораны">Рестораны</span></div><button class="btn btn-secondary btn-sm" style="margin-top:14px;width:100%"><span data-i18n="К категории">К категории</span></button></div>
+      <div class="cat-card" onclick="location.href='/categories.html?cat=singer'" style="cursor:pointer"><div class="cat-card-icon" style="background:#FDF0F4">🎤</div><div class="cat-card-name"><span data-i18n="Певцы">Певцы</span></div><button class="btn btn-secondary btn-sm" style="margin-top:14px;width:100%"><span data-i18n="К категории">К категории</span></button></div>
+      <div class="cat-card" onclick="location.href='/categories.html?cat=decor'" style="cursor:pointer"><div class="cat-card-icon" style="background:#FDF8EE">🌸</div><div class="cat-card-name"><span data-i18n="Оформление">Оформление</span></div><button class="btn btn-secondary btn-sm" style="margin-top:14px;width:100%"><span data-i18n="К категории">К категории</span></button></div>
     </div>
 
-    <h3 class="heading-md text-center" style="margin-bottom:32px">Категории</h3>
-    <div class="grid-3" id="home-categories"></div>
+    <!-- Mobile 2x3 -->
+    <div id="m-cats" style="display:none;grid-template-columns:1fr 1fr;gap:14px">
+      <a href="/categories.html?cat=rest"   style="background:white;border:1.5px solid #EAE4DC;border-radius:18px;padding:22px 12px 18px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 2px 12px rgba(92,60,40,0.06)">
+        <span style="font-size:40px;line-height:1">🍽️</span>
+        <span style="font-family:'Libre Baskerville',serif;font-size:13px;font-weight:700;color:#2C2C2C"><span data-i18n="Рестораны">Рестораны</span></span>
+      </a>
+      <a href="/categories.html?cat=singer" style="background:white;border:1.5px solid #EAE4DC;border-radius:18px;padding:22px 12px 18px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 2px 12px rgba(92,60,40,0.06)">
+        <span style="font-size:40px;line-height:1">🎤</span>
+        <span style="font-family:'Libre Baskerville',serif;font-size:13px;font-weight:700;color:#2C2C2C"><span data-i18n="Певцы">Певцы</span></span>
+      </a>
+      <a href="/categories.html?cat=decor"  style="background:white;border:1.5px solid #EAE4DC;border-radius:18px;padding:22px 12px 18px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 2px 12px rgba(92,60,40,0.06)">
+        <span style="font-size:40px;line-height:1">🌸</span>
+        <span style="font-family:'Libre Baskerville',serif;font-size:13px;font-weight:700;color:#2C2C2C"><span data-i18n="Оформление">Оформление</span></span>
+      </a>
+      <a href="/categories.html?cat=photo"  style="background:white;border:1.5px solid #EAE4DC;border-radius:18px;padding:22px 12px 18px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 2px 12px rgba(92,60,40,0.06)">
+        <span style="font-size:40px;line-height:1">📸</span>
+        <span style="font-family:'Libre Baskerville',serif;font-size:13px;font-weight:700;color:#2C2C2C"><span data-i18n="Фотографы">Фотографы</span></span>
+      </a>
+      <a href="/categories.html?cat=music"  style="background:white;border:1.5px solid #EAE4DC;border-radius:18px;padding:22px 12px 18px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 2px 12px rgba(92,60,40,0.06)">
+        <span style="font-size:40px;line-height:1">🎻</span>
+        <span style="font-family:'Libre Baskerville',serif;font-size:13px;font-weight:700;color:#2C2C2C"><span data-i18n="Музыканты">Музыканты</span></span>
+      </a>
+      <a href="/categories.html?cat=salon"  style="background:white;border:1.5px solid #EAE4DC;border-radius:18px;padding:22px 12px 18px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 2px 12px rgba(92,60,40,0.06)">
+        <span style="font-size:40px;line-height:1">👗</span>
+        <span style="font-family:'Libre Baskerville',serif;font-size:13px;font-weight:700;color:#2C2C2C"><span data-i18n="Салоны">Салоны</span></span>
+      </a>
+    </div>
+
+    <div style="text-align:center;margin-top:28px">
+      <a href="/categories.html" class="btn btn-ghost"><span data-i18n="Все категории →">Все категории →</span></a>
+    </div>
   </div>
 </section>
 
 <!-- ABOUT TEASER -->
 <section class="section" style="background:#EEF4ED">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center" id="about-grid">
       <div>
-        <h2 class="heading-lg" style="margin-bottom:20px">Мы создаём <span style="color:var(--sage-d)">связи</span>, которые превращаются в <span style="color:var(--sage-d)">незабываемые свадьбы</span></h2>
-        <p class="lead">Tuyona.tj — это где будущие молодожёны напрямую находят лучших свадебных исполнителей. Мы не берём комиссию — вы общаетесь и договариваетесь напрямую.</p>
+        <h2 class="heading-lg" style="margin-bottom:20px"><span data-i18n="Мы создаём связи, которые превращаются в незабываемые свадьбы">Мы создаём <span style="color:#6A9A64">связи</span>, которые превращаются в <span style="color:#6A9A64">незабываемые свадьбы</span></span></h2>
+        <p class="lead"><span data-i18n="Tan-tana.tj — где будущие молодожёны напрямую находят лучших свадебных исполнителей. Без комиссий и посредников.">Tan-tana.tj — где будущие молодожёны напрямую находят лучших свадебных исполнителей. Без комиссий и посредников.</span></p>
       </div>
-      <div style="background:var(--white);border-radius:24px;padding:52px;display:flex;flex-direction:column;align-items:center;box-shadow:var(--shadow-lg);text-align:center">
-        <div style="font-size:72px;margin-bottom:16px">💍</div>
-        <div style="font-family:var(--serif);font-size:28px;font-weight:700;color:var(--dark)">TUYONA.TJ</div>
-        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:6px">Wedding Marketplace</div>
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <img src="/img/logo-tantana.svg" alt="Tan-tana.tj" style="width:100%;max-width:320px;border-radius:20px;">
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- HOW -->
 <section class="section" style="background:var(--white)">
   <div class="container">
-    <div class="text-center" style="margin-bottom:40px">
-      <h2 class="heading-lg">Как работает наш сервис</h2>
-      <p class="lead" style="margin-top:8px">3 простых шага к идеальной свадьбе</p>
+    <div class="text-center" style="margin-bottom:36px">
+      <h2 class="heading-lg"><span data-i18n="Как работает сервис">Как работает сервис</span></h2>
     </div>
-    <div class="grid-3">
-      <div class="step-card">
-        <div class="step-card-num">01</div>
-        <div class="step-card-icon">🔍</div>
-        <div class="step-card-title">Найдите исполнителя</div>
-        <div class="step-card-text">Ищите по категориям, читайте отзывы и смотрите портфолио</div>
-        <span class="step-card-arrow">→</span>
-      </div>
-      <div class="step-card">
-        <div class="step-card-num">02</div>
-        <div class="step-card-icon">📞</div>
-        <div class="step-card-title">Свяжитесь напрямую</div>
-        <div class="step-card-text">Напишите или позвоните исполнителю через контакты в профиле</div>
-        <span class="step-card-arrow">→</span>
-      </div>
-      <div class="step-card">
-        <div class="step-card-num">03</div>
-        <div class="step-card-icon">🤝</div>
-        <div class="step-card-title">Обсудите детали</div>
-        <div class="step-card-text">Договоритесь обо всех нюансах напрямую с исполнителем</div>
-      </div>
+    <div class="grid-3" id="steps-grid">
+      <div class="step-card"><div class="step-card-num">01</div><div class="step-card-icon">🔍</div><div class="step-card-title"><span data-i18n="Найдите исполнителя">Найдите исполнителя</span></div><div class="step-card-text"><span data-i18n="Ищите по категориям, читайте отзывы">Ищите по категориям, читайте отзывы</span></div><span class="step-card-arrow">→</span></div>
+      <div class="step-card"><div class="step-card-num">02</div><div class="step-card-icon">📞</div><div class="step-card-title"><span data-i18n="Свяжитесь напрямую">Свяжитесь напрямую</span></div><div class="step-card-text"><span data-i18n="Позвоните через контакты в профиле">Позвоните через контакты в профиле</span></div><span class="step-card-arrow">→</span></div>
+      <div class="step-card"><div class="step-card-num">03</div><div class="step-card-icon">🤝</div><div class="step-card-title"><span data-i18n="Обсудите детали">Обсудите детали</span></div><div class="step-card-text"><span data-i18n="Договоритесь обо всех нюансах">Договоритесь обо всех нюансах</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
+<!-- WHY + CTA -->
 <section class="section" style="background:var(--bg)">
   <div class="container">
-    <div class="text-center" style="margin-bottom:40px">
-      <h2 class="heading-lg">Почему выбирают Tuyona.tj</h2>
+    <div class="text-center" style="margin-bottom:32px"><h2 class="heading-lg"><span data-i18n="Почему Tan-tana.tj">Почему Tan-tana.tj</span></h2></div>
+    <div class="grid-3" style="margin-bottom:48px" id="why-grid">
+      <div class="why-card"><div class="why-card-icon">🛡️</div><div class="why-card-title"><span data-i18n="Проверенные">Проверенные</span></div><div class="why-card-text"><span data-i18n="Каждый профиль проходит модерацию">Каждый профиль проходит модерацию</span></div></div>
+      <div class="why-card"><div class="why-card-icon">💗</div><div class="why-card-title"><span data-i18n="Прямой контакт">Прямой контакт</span></div><div class="why-card-text"><span data-i18n="Без посредников и скрытых комиссий">Без посредников и скрытых комиссий</span></div></div>
+      <div class="why-card"><div class="why-card-icon">💰</div><div class="why-card-title"><span data-i18n="Лучшие цены">Лучшие цены</span></div><div class="why-card-text"><span data-i18n="Сравнивайте и выбирайте лучшее">Сравнивайте и выбирайте лучшее</span></div></div>
     </div>
-    <div class="grid-3" style="margin-bottom:60px">
-      <div class="why-card"><div class="why-card-icon">🛡️</div><div class="why-card-title">Проверенные исполнители</div><div class="why-card-text">Каждый профиль проходит ручную модерацию перед публикацией</div></div>
-      <div class="why-card"><div class="why-card-icon">💗</div><div class="why-card-title">Прямой контакт</div><div class="why-card-text">Общайтесь напрямую, без посредников и скрытых комиссий</div></div>
-      <div class="why-card"><div class="why-card-icon">💰</div><div class="why-card-title">Лучшие цены</div><div class="why-card-text">Сравнивайте цены и выбирайте оптимальное предложение</div></div>
-    </div>
-
-    <!-- CTA -->
-    <div style="background:var(--sage);border-radius:24px;padding:60px;text-align:center">
-      <div style="background:var(--white);border-radius:16px;padding:48px;display:inline-block;min-width:460px">
-        <h3 class="heading-md" style="margin-bottom:20px">Начните планировать свадьбу мечты</h3>
-        <a href="categories.html" class="btn btn-primary btn-lg btn-full" style="margin-bottom:12px">Найти исполнителей</a>
-        <p style="font-size:12px;color:var(--muted)">Это бесплатно. Мы не берём комиссию с ваших сделок.</p>
+    <div style="background:#A8BFA3;border-radius:20px;padding:40px;text-align:center">
+      <div style="background:white;border-radius:14px;padding:40px;display:inline-block;width:100%;max-width:440px">
+        <h3 style="font-family:serif;font-size:22px;font-weight:700;margin-bottom:18px"><span data-i18n="Начните планировать свадьбу мечты">Начните планировать свадьбу мечты</span></h3>
+        <a href="/categories.html" class="btn btn-primary btn-lg" style="display:block;width:100%;margin-bottom:10px"><span data-i18n="Найти исполнителей">Найти исполнителей</span></a>
+        <p style="font-size:12px;color:#8A8A8A"><span data-i18n="Бесплатно. Без комиссий.">Бесплатно. Без комиссий.</span></p>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="footer" id="main-footer"></footer>
+<!-- FOOTER desktop only -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div><div class="footer-logo">Tan-tana<span>.tj</span></div><div class="footer-desc"><span data-i18n="Лучший маркетплейс для вашей счастливой свадьбы.">Лучший маркетплейс для вашей счастливой свадьбы.</span></div></div>
+      <div class="footer-col"><h4><span data-i18n="Услуги">Услуги</span></h4><a href="/categories.html?cat=rest">Рестораны</a><a href="/categories.html?cat=singer">Певцы</a><a href="/categories.html?cat=photo">Фотографы</a><a href="/categories.html?cat=salon">Салоны</a></div>
+      <div class="footer-col"><h4><span data-i18n="Категории">Категории</span></h4><a href="/categories.html?cat=music">Музыканты</a><a href="/categories.html?cat=car">Машины</a><a href="/categories.html?cat=mc">Ведущие</a></div>
+      <div class="footer-col"><h4><span data-i18n="Компания">Компания</span></h4><a href="/about.html">О нас</a><a href="#">Контакты</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Tan-tana.tj</div>
+      
+    </div>
+  </div>
+</footer>
 
-<script type="module">
-  import { renderNav, renderFooter } from './js/nav.js';
-  import { DEMO_LISTINGS, getCatName } from './js/listings.js';
 
-  renderNav('home');
-  renderFooter();
-
-  // Категории на главной
-  const cats = [
-    { key:'rest',   icon:'🍽️', name:'Рестораны',  bg:'#EEF4ED', count:3 },
-    { key:'singer', icon:'🎤', name:'Певцы',       bg:'#FDF0F4', count:1 },
-    { key:'decor',  icon:'🌸', name:'Оформление',  bg:'#FDF8EE', count:1 },
-  ];
-  document.getElementById('home-categories').innerHTML = cats.map(c => `
-    <div class="cat-card" onclick="location.href='categories.html?cat=${c.key}'">
-      <div class="cat-card-icon" style="background:${c.bg}"><span>${c.icon}</span></div>
-      <div class="cat-card-name">${c.name}</div>
-      <div class="cat-card-count">${c.count} объявления</div>
-      <button class="btn btn-secondary btn-sm" style="margin-top:14px;width:100%">К категориям</button>
-    </div>`).join('');
-</script>
+<script src="/js/i18n.js"></script>
 </body>
 </html>

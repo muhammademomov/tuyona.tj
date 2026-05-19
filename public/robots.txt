@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tan-tana.tj/sitemap.xml

@@ -3,27 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>О нас — Tuyona.tj</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/cards.css">
+  <title>О нас — Тан-Тана | Свадебный маркетплейс Таджикистана</title>
+  <!-- ═══ SEO META ═══════════════════════════════════════════════════════════ -->
+  <meta name="description" content="О платформе Тан-Тана (Тантана, tantana) — свадебный маркетплейс Таджикистана. Туй, туйона, туена — помогаем найти лучших исполнителей без комиссий по всему Таджикистану.">
+  <meta name="keywords" content="тантана о нас, tan-tana о платформе, tantana таджикистан, свадебный сайт таджикистан, туй маркетплейс душанбе, тантана тж, как найти исполнителей на свадьбу таджикистан, туйхона таджикистан поиск, арус домод таджикистан, никох таджикистан, туйона, туена, тан">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tan-tana.tj/about.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tan-tana.tj/about.html">
+  <meta property="og:title" content="О нас — Тан-Тана | Свадебный маркетплейс Таджикистана">
+  <meta property="og:description" content="Tan-tana.tj — платформа, где пары находят лучших свадебных исполнителей Таджикистана. Без комиссий и посредников.">
+  <meta property="og:image" content="https://tan-tana.tj/img/logo-tantana.svg">
+  <meta property="og:site_name" content="Tan-tana.tj">
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/cards.css">
+  <link rel="stylesheet" href="/css/mobile.css">
+  <style>
+    @media(max-width:900px){
+      .about-hero-grid{grid-template-columns:1fr!important}
+      .about-logo-big{max-width:280px;margin:0 auto}
+      .steps-grid-3{grid-template-columns:1fr!important}
+      .step-card-arrow{display:none}
+      .why-grid-3{grid-template-columns:1fr 1fr!important}
+      .cta-inner{min-width:unset!important;width:100%!important}
+    }
+    @media(max-width:600px){
+      .why-grid-3{grid-template-columns:1fr!important}
+      .principles-grid-2{grid-template-columns:1fr!important}
+    }
+  
+    .nav-partner-btn{background:#D4B483;color:white;padding:8px 18px;border-radius:50px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;white-space:nowrap}
+    .nav-partner-btn:hover{background:#A8864A;color:white}
+  
+    .lang-switcher{display:flex;align-items:center;gap:4px;margin-left:12px}
+    .lang-btn{background:none;border:1.5px solid #EAE4DC;color:#8A8A8A;padding:4px 10px;border-radius:50px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
+    .lang-btn:hover{border-color:#D4B483;color:#A8864A}
+    .lang-btn.active{background:#D4B483;color:white;border-color:#D4B483}
+  </style>
 </head>
-<body>
+<body class="has-bottom-nav">
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><span class="nav-logo-dot"></span>Tan-tana<span>.tj</span></a>
+    <div class="nav-links">
+      <a href="/"                class="nav-link "><span data-i18n="Главная">Главная</span></a>
+      <a href="/categories.html" class="nav-link "><span data-i18n="Категории">Категории</span></a>
+      <a href="/about.html"      class="nav-link active"><span data-i18n="О нас">О нас</span></a>
+      <a href="https://t.me/tantana_partner_bot?start=partner" target="_blank" class="nav-partner-btn"><span data-i18n="🤝 Стать партнёром">🤝 Стать партнёром</span></a>
 
-<nav class="nav" id="main-nav"></nav>
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('ru')" id="btn-ru">РУ</button>
+        <button class="lang-btn" onclick="setLang('tj')" id="btn-tj">ТЧ</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="/" class="bottom-nav-item">
+      <div class="bottom-nav-icon-wrap"><span class="bottom-nav-icon">🏠</span></div>
+      <span class="bottom-nav-label" data-i18n="Главная">Главная</span>
+    </a>
+    <a href="/categories.html" class="bottom-nav-item">
+      <div class="bottom-nav-icon-wrap"><span class="bottom-nav-icon">🔍</span></div>
+      <span class="bottom-nav-label" data-i18n="Категории">Категории</span>
+    </a>
+    <a href="/about.html" class="bottom-nav-item active">
+      <div class="bottom-nav-icon-wrap"><span class="bottom-nav-icon">ℹ️</span></div>
+      <span class="bottom-nav-label" data-i18n="О нас">О нас</span>
+    </a>
+  </div>
+</nav>
+
+
+<!-- NAV -->
+
 
 <!-- HERO -->
 <section class="section" style="background:#EEF4ED">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+    <div class="about-hero-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
       <div>
-        <h1 class="heading-xl" style="margin-bottom:20px">Мы создаём <span style="color:var(--sage-d)">связи</span>, которые превращаются в <span style="color:var(--sage-d)">незабываемые свадьбы</span></h1>
-        <p class="lead">Tuyona.tj — это где будущие молодожёны напрямую находят лучших свадебных исполнителей. Мы не берём комиссию — вы общаетесь и договариваетесь напрямую с выбранными специалистами.</p>
+        <div class="eyebrow" style="margin-bottom:16px"><span data-i18n="О платформе">О платформе</span></div>
+        <h1 class="heading-xl" style="margin-bottom:20px"><span data-i18n="Мы создаём связи, которые превращаются в незабываемые свадьбы">Мы создаём <span style="color:#6A9A64">связи</span>, которые превращаются в <span style="color:#6A9A64">незабываемые свадьбы</span></span></h1>
+        <p class="lead"><span data-i18n="Tan-tana.tj — это где будущие молодожёны напрямую находят лучших свадебных исполнителей. Мы не берём комиссию — вы общаетесь и договариваетесь напрямую с выбранными специалистами.">Tan-tana.tj — это где будущие молодожёны напрямую находят лучших свадебных исполнителей. Мы не берём комиссию — вы общаетесь и договариваетесь напрямую с выбранными специалистами.</span></p>
       </div>
-      <div style="background:var(--white);border-radius:28px;padding:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);text-align:center">
-        <div style="font-size:80px;margin-bottom:16px">💍</div>
-        <div style="font-family:var(--serif);font-size:32px;font-weight:700;color:var(--dark)">TUYONA.TJ</div>
-        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:8px">Wedding Marketplace</div>
+      <div class="about-logo-big" style="display:flex;align-items:center;justify-content:center;">
+        <img src="/img/logo-tantana.svg" alt="Tan-tana.tj" style="width:100%;max-width:320px;border-radius:20px;">
+      </div>
       </div>
     </div>
   </div>
@@ -34,53 +103,107 @@
   <div class="container">
     <div style="background:var(--bg);border-radius:20px;padding:44px;border:1px solid var(--border);margin-bottom:56px">
       <div style="font-family:var(--serif);font-size:22px;font-weight:700;color:var(--dark);margin-bottom:16px;display:flex;align-items:center;gap:12px">
-        <span style="font-size:28px">🎯</span> Наша миссия
+        <span style="font-size:28px">🎯</span> <span data-i18n="Наша миссия">Наша миссия</span>
       </div>
-      <p style="font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:24px">Мы упрощаем организацию свадьбы, устраняя посредников и делая процесс прозрачным. Наша цель — помочь каждой паре найти идеальных исполнителей для их особенного дня, экономя время, деньги и нервы.</p>
-      <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--dark);margin-bottom:14px">Наши принципы:</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text)">
-          <span style="color:var(--gold-d);font-size:16px;font-weight:700">✓</span> Только проверенные исполнители
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text)">
-          <span style="color:var(--gold-d);font-size:16px;font-weight:700">✓</span> Прямое общение без посредников
-        </div>
+      <p style="font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:24px"><span data-i18n="Мы упрощаем организацию свадьбы, устраняя посредников и делая процесс прозрачным. Наша цель — помочь каждой паре найти идеальных исполнителей для их особенного дня, экономя время, деньги и нервы.">Мы упрощаем организацию свадьбы, устраняя посредников и делая процесс прозрачным. Наша цель — помочь каждой паре найти идеальных исполнителей для их особенного дня, экономя время, деньги и нервы.</span></p>
+      <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--dark);margin-bottom:14px"><span data-i18n="Наши принципы:">Наши принципы:</span></div>
+      <div class="principles-grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text)"><span style="color:var(--gold-d);font-size:16px;font-weight:700">✓</span> <span data-i18n="Только проверенные исполнители">Только проверенные исполнители</span></div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text)"><span style="color:var(--gold-d);font-size:16px;font-weight:700">✓</span> <span data-i18n="Прямое общение без посредников">Прямое общение без посредников</span></div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text)"><span style="color:var(--gold-d);font-size:16px;font-weight:700">✓</span> <span data-i18n="Бесплатно для клиентов">Бесплатно для клиентов</span></div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text)"><span style="color:var(--gold-d);font-size:16px;font-weight:700">✓</span> <span data-i18n="Все категории в одном месте">Все категории в одном месте</span></div>
       </div>
     </div>
 
-    <h2 class="heading-lg text-center" style="margin-bottom:8px">Как работает наш сервис</h2>
-    <p class="lead text-center" style="margin-bottom:36px">3 простых шага к идеальной свадьбе</p>
-    <div class="grid-3" style="margin-bottom:64px">
-      <div class="step-card"><div class="step-card-num">01</div><div class="step-card-icon">🔍</div><div class="step-card-title">Найдите исполнителя</div><div class="step-card-text">Ищите по категориям, читайте отзывы и смотрите портфолио</div><span class="step-card-arrow">→</span></div>
-      <div class="step-card"><div class="step-card-num">02</div><div class="step-card-icon">📞</div><div class="step-card-title">Свяжитесь напрямую</div><div class="step-card-text">Напишите или позвоните исполнителю через контакты в профиле</div><span class="step-card-arrow">→</span></div>
-      <div class="step-card"><div class="step-card-num">03</div><div class="step-card-icon">🤝</div><div class="step-card-title">Обсудите детали</div><div class="step-card-text">Договоритесь обо всех нюансах напрямую с исполнителем</div></div>
+    <!-- Steps -->
+    <h2 class="heading-lg text-center" style="margin-bottom:8px"><span data-i18n="Как работает наш сервис">Как работает наш сервис</span></h2>
+    <p class="lead text-center" style="margin-bottom:36px"><span data-i18n="3 простых шага к идеальной свадьбе">3 простых шага к идеальной свадьбе</span></p>
+    <div class="steps-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px">
+      <div class="step-card">
+        <div class="step-card-num">01</div>
+        <div class="step-card-icon">🔍</div>
+        <div class="step-card-title"><span data-i18n="Найдите исполнителя">Найдите исполнителя</span></div>
+        <div class="step-card-text"><span data-i18n="Ищите по категориям, читайте отзывы и смотрите портфолио">Ищите по категориям, читайте отзывы и смотрите портфолио</span></div>
+        <span class="step-card-arrow">→</span>
+      </div>
+      <div class="step-card">
+        <div class="step-card-num">02</div>
+        <div class="step-card-icon">📞</div>
+        <div class="step-card-title"><span data-i18n="Свяжитесь напрямую">Свяжитесь напрямую</span></div>
+        <div class="step-card-text"><span data-i18n="Напишите или позвоните исполнителю через контакты в профиле">Напишите или позвоните исполнителю через контакты в профиле</span></div>
+        <span class="step-card-arrow">→</span>
+      </div>
+      <div class="step-card">
+        <div class="step-card-num">03</div>
+        <div class="step-card-icon">🤝</div>
+        <div class="step-card-title"><span data-i18n="Обсудите детали">Обсудите детали</span></div>
+        <div class="step-card-text"><span data-i18n="Договоритесь обо всех нюансах напрямую с исполнителем">Договоритесь обо всех нюансах напрямую с исполнителем</span></div>
+      </div>
     </div>
 
-    <h2 class="heading-lg text-center" style="margin-bottom:8px">Почему выбирают Tuyona.tj</h2>
-    <p class="lead text-center" style="margin-bottom:32px">Мы делаем процесс поиска свадебных услуг простым и безопасным</p>
-    <div class="grid-3" style="margin-bottom:64px">
-      <div class="why-card"><div class="why-card-icon">🛡️</div><div class="why-card-title">Проверенные исполнители</div><div class="why-card-text">Каждый профиль проходит ручную модерацию перед публикацией</div></div>
-      <div class="why-card"><div class="why-card-icon">💗</div><div class="why-card-title">Прямой контакт</div><div class="why-card-text">Общайтесь напрямую, без посредников и скрытых комиссий</div></div>
-      <div class="why-card"><div class="why-card-icon">💰</div><div class="why-card-title">Лучшие цены</div><div class="why-card-text">Сравнивайте цены и выбирайте оптимальное предложение</div></div>
+    <!-- Why us -->
+    <h2 class="heading-lg text-center" style="margin-bottom:8px"><span data-i18n="Почему выбирают Tan-tana.tj">Почему выбирают Tan-tana.tj</span></h2>
+    <p class="lead text-center" style="margin-bottom:32px"><span data-i18n="Мы делаем процесс поиска свадебных услуг простым и безопасным">Мы делаем процесс поиска свадебных услуг простым и безопасным</span></p>
+    <div class="why-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px">
+      <div class="why-card"><div class="why-card-icon">🛡️</div><div class="why-card-title"><span data-i18n="Проверенные исполнители">Проверенные исполнители</span></div><div class="why-card-text"><span data-i18n="Каждый профиль проходит ручную модерацию перед публикацией">Каждый профиль проходит ручную модерацию перед публикацией</span></div></div>
+      <div class="why-card"><div class="why-card-icon">💗</div><div class="why-card-title"><span data-i18n="Прямой контакт">Прямой контакт</span></div><div class="why-card-text"><span data-i18n="Общайтесь напрямую, без посредников и скрытых комиссий">Общайтесь напрямую, без посредников и скрытых комиссий</span></div></div>
+      <div class="why-card"><div class="why-card-icon">💰</div><div class="why-card-title"><span data-i18n="Лучшие цены">Лучшие цены</span></div><div class="why-card-text"><span data-i18n="Сравнивайте цены и выбирайте оптимальное предложение">Сравнивайте цены и выбирайте оптимальное предложение</span></div></div>
     </div>
 
     <!-- CTA -->
-    <div style="background:var(--sage);border-radius:24px;padding:60px;text-align:center">
-      <div style="background:var(--white);border-radius:16px;padding:48px;display:inline-block;min-width:460px">
-        <h3 class="heading-md" style="margin-bottom:20px">Начните планировать свадьбу мечты</h3>
-        <a href="categories.html" class="btn btn-primary btn-lg btn-full" style="margin-bottom:12px">Найти исполнителей</a>
-        <p style="font-size:12px;color:var(--muted)">Это бесплатно. Мы не берём комиссию с ваших сделок.</p>
+    <div style="background:#A8BFA3;border-radius:24px;padding:60px;text-align:center">
+      <div class="cta-inner" style="background:white;border-radius:16px;padding:48px;display:inline-block;min-width:460px">
+        <h3 style="font-family:var(--serif);font-size:26px;font-weight:700;color:var(--dark);margin-bottom:20px"><span data-i18n="Начните планировать свадьбу мечты">Начните планировать свадьбу мечты</span></h3>
+        <a href="/categories.html" class="btn btn-primary btn-lg" style="display:block;width:100%;margin-bottom:12px"><span data-i18n="Найти исполнителей">Найти исполнителей</span></a>
+        <p style="font-size:12px;color:var(--muted)"><span data-i18n="Это бесплатно. Мы не берём комиссию с ваших сделок.">Это бесплатно. Мы не берём комиссию с ваших сделок.</span></p>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="footer" id="main-footer"></footer>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Tan-tana<span>.tj</span></div>
+        <div class="footer-desc"><span data-i18n="Лучший маркетплейс для вашей счастливой свадьбы.">Лучший маркетплейс для вашей счастливой свадьбы.</span> Все свадебные услуги в одном месте — по всему Таджикистану.</div>
+      </div>
+      <div class="footer-col">
+        <h4><span data-i18n="Услуги">Услуги</span></h4>
+        <a href="/categories.html?cat=rest">Рестораны</a>
+        <a href="/categories.html?cat=singer">Певцы</a>
+        <a href="/categories.html?cat=photo">Фотографы</a>
+        <a href="/categories.html?cat=salon">Салоны</a>
+        <a href="/categories.html?cat=decor">Оформление</a>
+      </div>
+      <div class="footer-col">
+        <h4><span data-i18n="Категории">Категории</span></h4>
+        <a href="/categories.html?cat=music">Музыканты</a>
+        <a href="/categories.html?cat=car">Машины</a>
+        <a href="/categories.html?cat=mc">Ведущие</a>
+        <a href="/categories.html">Все категории</a>
+      </div>
+      <div class="footer-col">
+        <h4><span data-i18n="Компания">Компания</span></h4>
+        <a href="/about.html">О нас</a>
+        <a href="#">Контакты</a>
+        <a href="#">Условия</a>
+        <a href="#">Политика</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Tan-tana.tj — Все права защищены</div>
+      <div class="footer-langs">
+        <button class="footer-lang active">Русский</button>
+        <button class="footer-lang">Тоҷикӣ</button>
+        <button class="footer-lang">English</button>
+      </div>
+    </div>
+  </div>
+</footer>
 
-<script type="module">
-  import { renderNav, renderFooter } from './js/nav.js';
-  renderNav('about');
-  renderFooter();
-</script>
+
+<script src="/js/i18n.js"></script>
 </body>
 </html>

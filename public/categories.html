@@ -3,74 +3,443 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Категории — Tuyona.tj</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/cards.css">
+  <title>Категории — Свадебные услуги Таджикистана | Тан-Тана</title>
+  <!-- ═══ SEO META ═══════════════════════════════════════════════════════════ -->
+  <meta name="description" content="Все свадебные исполнители Таджикистана: туйхона и рестораны (Яккасарой, Яккачинор, Шаршара, Борбад), певцы, фотографы, оформление, музыканты, салоны, ведущие. Туй, туйона — найдите всё на Тан-Тана.">
+  <meta name="keywords" content="тантана, tantana, свадебные услуги таджикистан, все свадебные услуги душанбе, рестораны на свадьбу душанбе, туйхона душанбе список, яккасарой, яккачинор, шаршара, шахриер, борбад, точ, навруз, вахш, банкетный зал душанбе, певцы на свадьбу таджикистан, хонанда барои туй, фотограф свадьба душанбе, суратгир душанбе, оформление зала душанбе, ороиш барои туй, музыканты на свадьбу душанбе, мусикачи туй, тамада ведущий таджикистан, тантанабар, свадебные салоны душанбе, салони арусй, машины кортеж на свадьбу, мошина туй, туй маркетплейс, туйона, туена, тан">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tan-tana.tj/categories.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tan-tana.tj/categories.html">
+  <meta property="og:title" content="Категории — Все свадебные услуги Таджикистана | Тан-Тана">
+  <meta property="og:description" content="Найдите лучших свадебных исполнителей Таджикистана по категориям. Рестораны, певцы, фотографы и ещё 6 категорий.">
+  <meta property="og:image" content="https://tan-tana.tj/img/logo-tantana.svg">
+  <meta property="og:site_name" content="Tan-tana.tj">
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/cards.css">
+  <link rel="stylesheet" href="/css/mobile.css">
+  <style>
+    .page-header{background:var(--white);border-bottom:1px solid var(--border);padding:32px 0 0}
+    .page-header-inner{max-width:1180px;margin:0 auto;padding:0 40px}
+    .page-header h1{font-family:var(--serif);font-size:36px;font-weight:700;color:var(--dark);margin-bottom:20px}
+    .d-filter-bar{display:flex;gap:8px;flex-wrap:wrap;padding:0 0 0;margin-bottom:0}
+    .d-filter-chip{padding:8px 18px;border-radius:50px;border:1.5px solid var(--border);background:var(--white);font-size:13px;font-weight:500;color:var(--text);cursor:pointer;font-family:var(--sans);transition:all 0.2s;white-space:nowrap}
+    .d-filter-chip:hover{border-color:var(--gold);color:var(--gold-d)}
+    .d-filter-chip.active{background:var(--dark);color:white;border-color:var(--dark)}
+    .city-dropdown-wrap{position:relative;display:inline-flex;align-items:center}
+    .city-dropdown{appearance:none;-webkit-appearance:none;background:var(--white);border:1.5px solid #D4B483;border-radius:50px;padding:6px 32px 6px 14px;font-size:14px;font-weight:600;color:#A8864A;cursor:pointer;font-family:var(--sans);outline:none;transition:all 0.2s}
+    .city-dropdown:hover{background:#FDF8F0;border-color:#A8864A}
+    .city-dropdown-arrow{position:absolute;right:11px;top:50%;transform:translateY(-50%);pointer-events:none;color:#A8864A;font-size:11px}
+    .results-info{font-size:13px;color:#8A8A8A;margin:8px 0 4px;min-height:20px}
+    .listing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:32px 0 80px;max-width:1180px;margin:0 auto}
+    .l-card{background:var(--white);border-radius:16px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:all 0.25s;text-decoration:none;display:block}
+    .l-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.1);border-color:rgba(212,180,131,0.5)}
+    .l-card-img{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:72px;background:linear-gradient(135deg,#3A3530,#5A4E46);position:relative;overflow:hidden}
+    .l-card-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .l-card-body{padding:16px 18px 18px}
+    .l-card-cat{font-size:11px;color:var(--gold-d);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+    .l-card-name{font-family:var(--serif);font-size:18px;font-weight:700;color:#C4856F;margin-bottom:6px}
+    .l-card-desc{font-size:13px;color:var(--muted);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:12px}
+    .l-card-foot{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border)}
+    .l-card-price{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--dark)}
+    .l-card-badge{font-size:10px;font-weight:600;color:#6A9A64;background:#EEF4ED;padding:3px 10px;border-radius:4px}
+
+    .partner-card{background:var(--white);border-radius:16px;border:2px dashed #D4B483;overflow:hidden;cursor:pointer;transition:all 0.25s;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;text-align:center;padding:32px;gap:16px}
+    .partner-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(212,180,131,0.2);background:#FDF8F0}
+    .partner-card-plus{width:64px;height:64px;border-radius:50%;background:#F5F0E8;border:2px solid #D4B483;display:flex;align-items:center;justify-content:center;font-size:28px;color:#A8864A;font-weight:300;transition:all 0.2s}
+    .partner-card:hover .partner-card-plus{background:#D4B483;color:white}
+    .partner-card-title{font-family:var(--serif);font-size:18px;font-weight:700;color:#A8864A}
+    .partner-card-desc{font-size:13px;color:#8A8A8A;line-height:1.5}
+    .partner-modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:none;align-items:center;justify-content:center;padding:16px}
+    .partner-modal.open{display:flex}
+    .partner-box{background:white;border-radius:20px;padding:36px;max-width:420px;width:100%;text-align:center}
+    .partner-icon{font-size:48px;margin-bottom:12px}
+    .partner-title{font-family:var(--serif);font-size:22px;font-weight:700;color:#2C2C2C;margin-bottom:8px}
+    .partner-desc{font-size:14px;color:#8A8A8A;line-height:1.6;margin-bottom:24px}
+    .partner-btn-tg{display:inline-flex;align-items:center;gap:8px;background:#229ED9;color:white;border:none;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sans);text-decoration:none;margin-bottom:10px}
+    .partner-btn-tg:hover{opacity:0.88}
+    .partner-btn-close{background:none;border:none;color:#8A8A8A;font-size:13px;cursor:pointer;font-family:var(--sans);margin-top:4px}
+    .empty{text-align:center;padding:80px 20px;color:var(--muted);grid-column:1/-1}
+    .empty-icon{font-size:52px;margin-bottom:12px}
+    .spinner-wrap{grid-column:1/-1;text-align:center;padding:60px}
+    @media(max-width:900px){.listing-grid{grid-template-columns:repeat(2,1fr);padding:20px 16px 60px}}
+    @media(max-width:600px){.listing-grid{grid-template-columns:1fr}}
+    @media(max-width:768px){
+      .page-header{display:none}
+      .listing-grid{padding:16px 16px 60px}
+    }
+    @media(min-width:769px){
+      .m-page-header{display:none!important}
+    }
+  
+    .nav-partner-btn{background:#D4B483;color:white;padding:8px 18px;border-radius:50px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;white-space:nowrap}
+    .nav-partner-btn:hover{background:#A8864A;color:white}
+  
+    .lang-switcher{display:flex;align-items:center;gap:4px;margin-left:12px}
+    .lang-btn{background:none;border:1.5px solid #EAE4DC;color:#8A8A8A;padding:4px 10px;border-radius:50px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
+    .lang-btn:hover{border-color:#D4B483;color:#A8864A}
+    .lang-btn.active{background:#D4B483;color:white;border-color:#D4B483}
+  </style>
 </head>
-<body>
+<body class="has-bottom-nav">
 
-<nav class="nav" id="main-nav"></nav>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><span class="nav-logo-dot"></span>Tan-tana<span>.tj</span></a>
+    <div class="nav-links">
+      <a href="/"                class="nav-link"><span data-i18n="Главная">Главная</span></a>
+      <a href="/categories.html" class="nav-link active"><span data-i18n="Категории">Категории</span></a>
+      <a href="/about.html"      class="nav-link"><span data-i18n="О нас">О нас</span></a>
+      <a href="https://t.me/tantana_partner_bot?start=partner" target="_blank" class="nav-partner-btn"><span data-i18n="🤝 Стать партнёром">🤝 Стать партнёром</span></a>
 
-<div class="container" style="padding-top:52px;padding-bottom:80px">
-  <h1 class="heading-lg" style="margin-bottom:28px">Все категории</h1>
-
-  <div class="filter-bar" id="filter-bar">
-    <button class="filter-chip active" data-cat="all">Все категории</button>
-    <button class="filter-chip" data-cat="rest">Рестораны</button>
-    <button class="filter-chip" data-cat="music">Музыканты</button>
-    <button class="filter-chip" data-cat="decor">Оформление</button>
-    <button class="filter-chip" data-cat="mc">Ведущие</button>
-    <button class="filter-chip" data-cat="photo">Фотографы</button>
-    <button class="filter-chip" data-cat="singer">Певцы</button>
-    <button class="filter-chip" data-cat="car">Машины</button>
-    <button class="filter-chip" data-cat="salon">Свадебные салоны</button>
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('ru')" id="btn-ru">РУ</button>
+        <button class="lang-btn" onclick="setLang('tj')" id="btn-tj">ТЧ</button>
+      </div>
+    </div>
   </div>
+</nav>
 
-  <div class="listings-grid" id="listings-grid">
-    <div class="spinner" style="grid-column:1/-1;margin:60px auto"></div>
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="/" class="bottom-nav-item"><span class="bottom-nav-icon">🏠</span><span data-i18n="Главная">Главная</span></a>
+    <a href="/categories.html" class="bottom-nav-item active"><span class="bottom-nav-icon">🔍</span><span data-i18n="Категории">Категории</span></a>
+    <a href="/about.html" class="bottom-nav-item"><span class="bottom-nav-icon">ℹ️</span><span data-i18n="О нас">О нас</span></a>
+    <a href="https://t.me/tantana_partner_bot?start=partner" target="_blank" class="bottom-nav-item" style="color:#D4B483"><span class="bottom-nav-icon">🤝</span><span data-i18n="Партнёр">Партнёр</span></a>
+  </div>
+</nav>
+
+<!-- Desktop header -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:0">
+      <h1 style="margin:0">Все категории</h1>
+      <div class="city-dropdown-wrap">
+        <select class="city-dropdown" id="city-select" onchange="onCityChange(this.value)">
+          <option value="Душанбе">📍 Душанбе</option>
+          <option value="Хуҷанд">📍 Хуҷанд</option>
+          <option value="Бохтар">📍 Бохтар</option>
+          <option value="Кӯлоб">📍 Кӯлоб</option>
+          <option value="Вся страна">📍 Вся страна</option>
+          <option value="all">🌍 Все города</option>
+        </select>
+        <span class="city-dropdown-arrow">▼</span>
+      </div>
+    </div>
+    <div class="d-filter-bar" id="d-filter-bar"><button class="d-filter-chip active" data-cat="all">Все категории</button></div>
+<div class="results-info" id="results-info"></div>
   </div>
 </div>
 
-<footer class="footer" id="main-footer"></footer>
+<!-- Mobile header -->
+<div class="m-page-header" style="padding:16px 16px 0;background:var(--white);border-bottom:1px solid var(--border)">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <h1 style="font-family:var(--serif);font-size:24px;font-weight:700;margin:0">Категории</h1>
+    <div style="position:relative;display:inline-flex;align-items:center">
+      <select class="city-dropdown" id="m-city-select" onchange="onCityChange(this.value)" style="font-size:12px;padding:5px 26px 5px 10px">
+        <option value="Душанбе">📍 Душанбе</option>
+        <option value="Хуҷанд">📍 Хуҷанд</option>
+        <option value="Бохтар">📍 Бохтар</option>
+        <option value="Кӯлоб">📍 Кӯлоб</option>
+        <option value="Вся страна">📍 Вся страна</option>
+        <option value="all">🌍 Все</option>
+      </select>
+      <span style="position:absolute;right:8px;font-size:9px;color:#A8864A;pointer-events:none">▼</span>
+    </div>
+  </div>
+  <div style="display:flex;overflow-x:auto;gap:8px;padding-bottom:12px;scrollbar-width:none" id="m-filter-bar"><button class="d-filter-chip active" data-cat="all">Все</button></div>
+</div>
 
-<script type="module">
-  import { renderNav, renderFooter } from './js/nav.js';
-  import { DEMO_LISTINGS, renderCard } from './js/listings.js';
+<div style="padding:0 40px;max-width:1260px;margin:0 auto" id="grid-wrap">
+  <div class="listing-grid" id="listing-grid">
+    <div class="spinner-wrap"><div class="spinner"></div></div>
+  </div>
+</div>
 
-  renderNav('cats');
-  renderFooter();
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div><div class="footer-logo">Tan-tana<span>.tj</span></div><div class="footer-desc"><span data-i18n="Лучший маркетплейс для вашей счастливой свадьбы.">Лучший маркетплейс для вашей счастливой свадьбы.</span></div></div>
+      <div class="footer-col"><h4>Услуги</h4><a href="/categories.html?cat=rest">Рестораны</a><a href="/categories.html?cat=singer">Певцы</a><a href="/categories.html?cat=photo">Фотографы</a></div>
+      <div class="footer-col"><h4>Категории</h4><a href="/categories.html?cat=music">Музыканты</a><a href="/categories.html?cat=car">Машины</a><a href="/categories.html?cat=mc">Ведущие</a></div>
+      <div class="footer-col"><h4>Компания</h4><a href="/about.html">О нас</a><a href="#">Контакты</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Tan-tana.tj</div>
+      
+    </div>
+  </div>
+</footer>
 
-  let currentCat = new URLSearchParams(location.search).get('cat') || 'all';
+<script>
+var CATS = {rest:'Ресторан',music:'Музыкант',singer:'Певец',photo:'Фотограф',decor:'Оформление',salon:'Салон',car:'Машины',mc:'Ведущий'};
+var ICONS = {rest:'🍽️',music:'🎻',singer:'🎤',photo:'📸',decor:'🌸',salon:'👗',car:'🚗',mc:'🎙️'};
+var allListings = [];
+var currentCat = new URLSearchParams(location.search).get('cat') || 'all';
+var currentCity = new URLSearchParams(location.search).get('city') || 'Душанбе';
 
-  function renderListings(cat) {
-    currentCat = cat;
-    const items = cat === 'all' ? DEMO_LISTINGS : DEMO_LISTINGS.filter(l => l.category === cat);
-    const grid = document.getElementById('listings-grid');
-    if (items.length === 0) {
-      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">🔍</div><div class="empty-state-title">Ничего не найдено</div><p class="text-muted">Попробуйте другую категорию</p></div>`;
-    } else {
-      grid.innerHTML = items.map(renderCard).join('');
-    }
+function getIcon(cat){ return ICONS[cat] || '⭐'; }
+function getCat(cat){ return CATS[cat] || cat; }
+
+function renderCard(l){
+  var imgHtml = l.image_url
+    ? '<img src="' + l.image_url.split('|')[0] + '" alt="' + l.name + '">'
+    : '<span style="font-size:72px;position:relative;z-index:1">' + getIcon(l.category) + '</span>';
+  return '<a class="l-card" href="/listing.html?id=' + l.id + '">' +
+    '<div class="l-card-img">' + imgHtml + '</div>' +
+    '<div class="l-card-body">' +
+      '<div class="l-card-cat">' + getCat(l.category) + '</div>' +
+      '<div class="l-card-name">' + l.name + '</div>' +
+      '<div class="l-card-desc">' + (l.description || '') + '</div>' +
+      '<div class="l-card-foot">' +
+        '<div class="l-card-price">' + (l.price || 'Договорная') + '</div>' +
+        (l.verified ? '<span class="l-card-badge">✓ Проверено</span>' : '') +
+      '</div>' +
+
+    '</div>' +
+  '</a>';
+}
+
+// Fisher-Yates shuffle
+function shuffle(arr){
+  var a = arr.slice();
+  for(var i=a.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var t=a[i]; a[i]=a[j]; a[j]=t;
+  }
+  return a;
+}
+
+function render(cat, city){
+  if(cat !== undefined) currentCat = cat;
+  if(city !== undefined) currentCity = city;
+
+  // Filter by category
+  var items = currentCat === 'all' ? allListings.slice() : allListings.filter(function(l){ return l.category === currentCat; });
+  
+  // Filter by city
+  if(currentCity !== 'all'){
+    items = items.filter(function(l){ return l.city === currentCity; });
   }
 
-  // Filter chips
-  document.getElementById('filter-bar').addEventListener('click', e => {
-    const chip = e.target.closest('.filter-chip');
-    if (!chip) return;
-    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    renderListings(chip.dataset.cat);
+  // Separate verified (fixed top) and regular (shuffled)
+  var verified = items.filter(function(l){ return l.verified; });
+  var regular  = shuffle(items.filter(function(l){ return !l.verified; }));
+  items = verified.concat(regular);
+
+  // Update results info
+  var info = document.getElementById('results-info');
+  if(info){
+    var cityLabel = currentCity === 'all' ? 'все города' : currentCity;
+    info.textContent = items.length > 0 ? 'Найдено: ' + items.length + ' · ' + cityLabel : '';
+  }
+
+  var grid = document.getElementById('listing-grid');
+  var partnerCard = '<div class="partner-card" onclick="openPartnerModal()">' +
+    '<div class="partner-card-plus">+</div>' +
+    '<div class="partner-card-title">Стать партнёром</div>' +
+    '<div class="partner-card-desc">Разместите своё объявление на платформе Tan-tana.tj и получайте новых клиентов</div>' +
+  '</div>';
+  if(!items.length){
+    grid.innerHTML = partnerCard;
+  } else {
+    grid.innerHTML = items.map(renderCard).join('') + partnerCard;
+  }
+}
+
+// Load categories from API
+fetch('/api/categories')
+  .then(function(r){ return r.json(); })
+  .then(function(j){
+    if(!j.success) return;
+    var cats = j.data;
+    var dBar = document.getElementById('d-filter-bar');
+    var mBar = document.getElementById('m-filter-bar');
+    cats.forEach(function(c){
+      var btn1 = document.createElement('button');
+      btn1.className = 'd-filter-chip';
+      btn1.dataset.cat = c.slug;
+      btn1.textContent = c.icon + ' ' + c.name;
+      dBar.appendChild(btn1);
+
+      var btn2 = document.createElement('button');
+      btn2.className = 'd-filter-chip';
+      btn2.dataset.cat = c.slug;
+      btn2.textContent = c.name;
+      mBar.appendChild(btn2);
+    });
+    // Re-setup filter after dynamic buttons added
+    setupFilter('d-filter-bar');
+    setupFilter('m-filter-bar');
+    // Activate current cat
+    if(currentCat !== 'all'){
+      document.querySelectorAll('.d-filter-chip').forEach(function(t){
+        t.classList.toggle('active', t.dataset.cat === currentCat);
+      });
+    }
+  })
+  .catch(function(){});
+
+// Load listings from API
+fetch('/api/listings')
+  .then(function(r){ return r.json(); })
+  .then(function(j){
+    if(j.success) allListings = j.data;
+    render(currentCat);
+  })
+  .catch(function(){
+    render(currentCat);
   });
 
-  // Set active chip from URL
-  if (currentCat !== 'all') {
-    document.querySelectorAll('.filter-chip').forEach(c => {
-      c.classList.toggle('active', c.dataset.cat === currentCat);
-    });
-  }
+// Set active filters from URL
+if(currentCat !== 'all'){
+  document.querySelectorAll('.d-filter-chip').forEach(function(t){
+    t.classList.toggle('active', t.dataset.cat === currentCat);
+  });
+}
 
-  renderListings(currentCat);
+// Filter clicks
+function setupFilter(barId){
+  var bar = document.getElementById(barId);
+  if(!bar) return;
+  bar.addEventListener('click', function(e){
+    var t = e.target.closest('.d-filter-chip');
+    if(!t) return;
+    document.querySelectorAll('.d-filter-chip').forEach(function(x){ x.classList.remove('active'); });
+    document.querySelectorAll('[data-cat="'+t.dataset.cat+'"]').forEach(function(x){ x.classList.add('active'); });
+    render(t.dataset.cat, undefined);
+  });
+}
+function onCityChange(city){
+  currentCity = city;
+  // Sync both selects
+  var ds = document.getElementById('city-select');
+  var ms = document.getElementById('m-city-select');
+  if(ds) ds.value = city;
+  if(ms) ms.value = city;
+  render(undefined, city);
+}
+setupFilter('d-filter-bar');
+setupFilter('m-filter-bar');
+
+</script>
+<!-- Partner Modal -->
+<div class="partner-modal" id="partner-modal" onclick="closePartnerModal(event)">
+  <div class="partner-box">
+    <div class="partner-icon">🤝</div>
+    <div class="partner-title">Стать партнёром Tan-tana.tj</div>
+    <div class="partner-desc">Хотите разместить своё объявление на нашей платформе? Напишите нам в Telegram — мы расскажем всё о партнёрстве.</div>
+    <a class="partner-btn-tg" href="https://t.me/tantana_partner_bot?start=partner" target="_blank">
+      ✈️ Написать в Telegram
+    </a>
+    <br>
+    <button class="partner-btn-close" onclick="closePartnerModal()">Закрыть</button>
+  </div>
+</div>
+
+<script>
+function openPartnerModal(){
+  document.getElementById('partner-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePartnerModal(e){
+  if(!e || e.target===document.getElementById('partner-modal')){
+    document.getElementById('partner-modal').classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+</script>
+<script>
+// ── LANGUAGE SYSTEM ──────────────────────────────────
+const TRANSLATIONS = {
+  ru: {},
+  tj: {
+    'Главная': 'Саҳифаи асосӣ',
+    'Категории': 'Категорияҳо',
+    'О нас': 'Дар бораи мо',
+    '🤝 Стать партнёром': '🤝 Шарик шудан',
+    'Партнёр': 'Шарик',
+    'Все категории': 'Ҳамаи категорияҳо',
+    'Все города': 'Ҳамаи шаҳрҳо',
+    'Договорная': 'Созишӣ',
+    '✓ Проверено': '✓ Тасдиқ шудааст',
+    'Стать партнёром': 'Шарик шудан',
+    'Разместите своё объявление на платформе Tan-tana.tj и получайте новых клиентов': 'Эълони худро дар платформаи Tan-tana.tj ҷойгир кунед ва мизоҷони нав гиред',
+    '<span data-i18n="Лучший маркетплейс для вашей счастливой свадьбы.">Лучший маркетплейс для вашей счастливой свадьбы.</span>': 'Беҳтарин маркетплейс барои тӯйи хушбахти шумо.',
+    'УСЛУГИ': 'ХИДМАТҲО',
+    'КАТЕГОРИИ': 'КАТЕГОРИЯҲО',
+    'КОМПАНИЯ': 'ШИРКАТ',
+    'Рестораны': 'Тарабхонаҳо',
+    'Певцы': 'Хонандагон',
+    'Фотографы': 'Суратгирон',
+    'Музыканты': 'Мусиқачиён',
+    'Машины': 'Мошинаҳо',
+    'Ведущие': 'Тантанабарон',
+    'Оформление': 'Ороиш',
+    'Свадебные салоны': 'Салонҳои арӯсӣ',
+    'О нас': 'Дар бораи мо',
+    'Контакты': 'Тамос',
+    'Ничего не найдено': 'Чизе ёфт нашуд',
+    'Попробуйте другую категорию или город': 'Категория ё шаҳри дигарро санҷед',
+    'Добро пожаловать в Tan-tana.tj': 'Хуш омадед ба Tan-tana.tj',
+    'Ваша онлайн-площадка для свадебных услуг. Рестораны, певцы, фотографы и многое другое — всё в одном месте.': 'Майдончаи онлайнии шумо барои хидматҳои тӯй. Тарабхонаҳо, хонандагон, суратгирон ва ғайра — ҳама дар як ҷо.',
+    'Найти услугу': 'Хидмат ёфтан',
+    'Все категории →': 'Ҳамаи категорияҳо →',
+    'Как работает сервис': 'Хидмат чӣ тавр кор мекунад',
+    'ПОЧЕМУ ВЫБИРАЮТ TAN-TANA.TJ?': 'ЧАРО TAN-TANA.TJ-РО ИНТИХОБ МЕКУНАНД?',
+    'Лучшие предложения для вашей свадьбы': 'Беҳтарин пешниҳодҳо барои тӯйи шумо',
+    'Выбирайте из тысяч проверенных объявлений': 'Аз ҳазорҳо эълони тасдиқшуда интихоб кунед',
+    'Закрыть': 'Пӯшидан',
+    '✈️ Написать в Telegram': '✈️ Дар Telegram навиштан',
+    'Стать партнёром Tan-tana.tj': 'Шарики Tan-tana.tj шудан',
+    'Хотите разместить своё объявление на нашей платформе? Напишите нам в Telegram — мы расскажем всё о партнёрстве.': 'Мехоҳед эълони худро дар платформаи мо ҷойгир кунед? Ба мо дар Telegram нависед — мо дар бораи шарикӣ ҳама чизро мегӯем.',
+    'СВАДЬБА ВАШЕЙ МЕЧТЫ ЖДЁТ ВАС': 'ТӮЙИ ОРЗУИИ ШУМО ИНТИЗОР АСТ',
+    'Найдено': 'Ёфт шуд',
+    'Категории': 'Категорияҳо',
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'ru';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  applyLang();
+}
+
+function applyLang() {
+  // Update buttons
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('btn-' + currentLang);
+  if(btn) btn.classList.add('active');
+
+  // Translate all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    const t = TRANSLATIONS[currentLang];
+    if(t && t[key]) {
+      el.textContent = t[key];
+    } else {
+      el.textContent = key;
+    }
+  });
+
+  // Translate placeholder data-i18n-ph
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.dataset.i18nPh;
+    const t = TRANSLATIONS[currentLang];
+    el.placeholder = (t && t[key]) ? t[key] : key;
+  });
+}
+
+// Auto-apply on load
+document.addEventListener('DOMContentLoaded', function() {
+  applyLang();
+});
+// Also apply immediately
+if(document.readyState !== 'loading') applyLang();
 </script>
 </body>
 </html>
