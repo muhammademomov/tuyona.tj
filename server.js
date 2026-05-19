@@ -15,7 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 const uploadDir = path.join(__dirname, 'public/uploads');
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
-// Статические файлы (фронтенд + загруженные фото)
+// ── СТАТИЧЕСКИЕ ФАЙЛЫ (robots.txt, sitemap.xml, html, css, js) ──
+// ВАЖНО: должно быть ДО catch-all роута app.get('*', ...)
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(uploadDir));
 
@@ -30,8 +31,14 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString(), app: 'Tan-tana.tj' });
 });
 
-// ── ФРОНТЕНД — отдаём HTML для всех остальных роутов ──
+// ── ФРОНТЕНД — только для HTML роутов, НЕ для статических файлов ──
 app.get('*', (req, res) => {
+  // Если запрашивают .txt, .xml и т.д. — отдаём 404, не index.html
+  const ext = path.extname(req.path);
+  if (ext && ext !== '.html') {
+    return res.status(404).send('Not found');
+  }
+
   const file = path.join(__dirname, 'public', 'index.html');
   if (fs.existsSync(file)) {
     res.sendFile(file);
