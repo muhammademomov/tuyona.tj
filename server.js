@@ -11,22 +11,35 @@ app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ── ЯВНЫЕ РОУТЫ ДЛЯ SEO ФАЙЛОВ (первыми, до всего остального) ──
+// ── SEO ФАЙЛЫ — вшиты прямо в код, не зависят от файловой системы ──
 app.get('/robots.txt', (req, res) => {
   res.type('text/plain');
-  res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
+  res.send('User-agent: *\nAllow: /\nSitemap: https://tan-tana.tj/sitemap.xml');
 });
 
 app.get('/sitemap.xml', (req, res) => {
   res.type('application/xml');
-  res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+  res.send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://tan-tana.tj/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://tan-tana.tj/categories.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://tan-tana.tj/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tan-tana.tj/categories.html?cat=rest</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tan-tana.tj/categories.html?cat=singer</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tan-tana.tj/categories.html?cat=photo</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tan-tana.tj/categories.html?cat=decor</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tan-tana.tj/categories.html?cat=music</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tan-tana.tj/categories.html?cat=salon</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tan-tana.tj/categories.html?cat=car</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tan-tana.tj/categories.html?cat=mc</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+</urlset>`);
 });
 
 // Папка для загрузок
 const uploadDir = path.join(__dirname, 'public/uploads');
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
-// Статические файлы (фронтенд + загруженные фото)
+// Статические файлы
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(uploadDir));
 
@@ -41,7 +54,7 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString(), app: 'Tan-tana.tj' });
 });
 
-// ── ФРОНТЕНД — отдаём index.html для всех остальных роутов ──
+// ── ФРОНТЕНД ──
 app.get('*', (req, res) => {
   const file = path.join(__dirname, 'public', 'index.html');
   if (fs.existsSync(file)) {
